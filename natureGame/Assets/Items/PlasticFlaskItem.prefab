@@ -92,5 +92,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cam: {fileID: 0}
   gameobject: {fileID: 6270130327621116888}
-  collider2D: {fileID: 3590917147623600758}
   clicked: 0
+  dropzones: []

@@ -9,17 +9,10 @@ public class PlasticFlaskItem : DragAndDropItem
     {
         cam = Camera.main;
         name = "PlasticFlask";
-        Dropzones.Add(new DropZone(100f, 100f, 0f, 0f));
-    
+
+        dropzones.Add(GameObject.Find("DZ plastic flask"));
+      
     }
 
-    void Update()
-    {
-        if(clicked == true)
-        {
-            var mouseWorldPosition = cam.ScreenToWorldPoint(Input.mousePosition);
-            gameobject.transform.position = new Vector3(mouseWorldPosition.x, mouseWorldPosition.y,0f);
-           
-        }
-    }
+  
 }

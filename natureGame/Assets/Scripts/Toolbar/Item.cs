@@ -7,7 +7,6 @@ public abstract class Item : MonoBehaviour
     public Camera cam;
     public GameObject gameobject;
     public abstract void OnClick();
-    public BoxCollider2D collider2D;
     void OnMouseDown ()
     {
         OnClick();
