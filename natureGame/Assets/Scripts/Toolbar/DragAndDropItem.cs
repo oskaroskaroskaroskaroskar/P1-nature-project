@@ -6,7 +6,7 @@ using UnityEngine;
 public abstract class DragAndDropItem : Item
 {
     public GameObject dropObject;
-    public bool clicked = false;
+    bool clicked = false;
     bool inDropZone = false;
     public List<GameObject> dropzones = new List<GameObject>();
     public override void OnClick()
@@ -19,21 +19,10 @@ public abstract class DragAndDropItem : Item
     {
         if (clicked == true)
         {
-            
-
             var mouseWorldPosition = cam.ScreenToWorldPoint(Input.mousePosition);
             gameobject.transform.position = new Vector3(mouseWorldPosition.x, mouseWorldPosition.y, 0f);
 
-        } else if (clicked == false)
-        {
-            if (inDropZone == true)
-            {
-                InstObject();
-            } else
-            {
-                ResetPosition();
-            }
-        }
+        } 
     }
     void OnTriggerEnter2D(Collider2D other)
     {
@@ -57,16 +46,25 @@ public abstract class DragAndDropItem : Item
     }
     private void OnMouseUp()
     {
-        clicked = false;
+        if (clicked == true)
+        {
+            clicked = false;
+            Released();
+        }
+    }
+    void Released ()
+    {
+        if (inDropZone == true)
+        {
+            InstObject();
+        }
+        ResetPosition();
     }
     void InstObject ()
     {
         GameObject obj = Instantiate(dropObject);
         obj.transform.position = this.transform.position;
-        ResetPosition();
+       
     }
-    void ResetPosition ()
-    {
-        transform.position = Vector3.zero;
-    }
+   
 }
