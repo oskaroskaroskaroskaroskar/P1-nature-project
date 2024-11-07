@@ -529,7 +529,8 @@ MonoBehaviour:
   cam: {fileID: 0}
   gameobject: {fileID: 1804975243}
   listPosition: {x: 0, y: 0, z: 0}
-  pouringZones: []
+  pouringZones:
+  - {fileID: 472744836}
 --- !u!50 &1804975246
 Rigidbody2D:
   serializedVersion: 4
@@ -620,7 +621,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4947285177540757757, guid: 6b42156ff9ae3e3488b3e4750331d4c3, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -10
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4947285177540757757, guid: 6b42156ff9ae3e3488b3e4750331d4c3, type: 3}
       propertyPath: m_LocalRotation.w
@@ -696,6 +697,22 @@ PrefabInstance:
       propertyPath: dropzones.Array.data[0]
       value: 
       objectReference: {fileID: 472744836}
+    - target: {fileID: 3590917147623600758, guid: 5b559889dd1f1a84a8043f91349e96d4, type: 3}
+      propertyPath: m_Size.x
+      value: 2.2853713
+      objectReference: {fileID: 0}
+    - target: {fileID: 3590917147623600758, guid: 5b559889dd1f1a84a8043f91349e96d4, type: 3}
+      propertyPath: m_Size.y
+      value: 0.7935147
+      objectReference: {fileID: 0}
+    - target: {fileID: 3590917147623600758, guid: 5b559889dd1f1a84a8043f91349e96d4, type: 3}
+      propertyPath: m_Offset.x
+      value: -0.00774312
+      objectReference: {fileID: 0}
+    - target: {fileID: 3590917147623600758, guid: 5b559889dd1f1a84a8043f91349e96d4, type: 3}
+      propertyPath: m_Offset.y
+      value: -0.020648524
+      objectReference: {fileID: 0}
     - target: {fileID: 6270130327621116888, guid: 5b559889dd1f1a84a8043f91349e96d4, type: 3}
       propertyPath: m_Name
       value: PlasticFlaskItem
