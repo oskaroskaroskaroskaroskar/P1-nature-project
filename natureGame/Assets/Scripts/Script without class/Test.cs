@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MouseStuckItem : Item
+public class Test : MonoBehaviour
 {
     private bool isClicked = false;
     public GameObject trashPickerPrefab; // Optional if instantiating
@@ -84,11 +84,5 @@ public class MouseStuckItem : Item
         Vector3 mousePosition = Input.mousePosition;
         mousePosition.z = Camera.main.nearClipPlane; // Set z to ensure it's in the correct plane for 2D
         return Camera.main.ScreenToWorldPoint(mousePosition);
-    }
-
-    // Implement the abstract method from Item
-    public override void OnClick()
-    {
-        ToggleClick();
     }
 }
