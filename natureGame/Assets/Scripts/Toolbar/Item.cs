@@ -8,7 +8,6 @@ public abstract class Item : MonoBehaviour
     public GameObject gameobject;
     public abstract void OnClick();
 
-
     void OnMouseDown ()
     {
         OnClick();
