@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 
-public class PouringItem : Item
+public abstract class PouringItem : Item
 {
     bool clicked = false;
     bool inPourZone = false;

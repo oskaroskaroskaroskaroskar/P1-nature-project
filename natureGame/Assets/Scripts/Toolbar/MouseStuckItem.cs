@@ -9,7 +9,7 @@ public class MouseStuckItem : Item
     public GameObject trashPicker; // Assign the triangle prefab here or instantiate it from prefab
     private Vector3 initialPickupPosition;
 
-    private void Start()
+    public override void OnStart()
     {
         initialPickupPosition = transform.position;
 
@@ -47,10 +47,10 @@ public class MouseStuckItem : Item
     private void OnMouseDown()
     {
         Debug.Log("Mouse Down on TrashPickerItem");
-        ToggleClick();
+        OnClick();
     }
 
-    private void ToggleClick()
+    public override void OnClick()
     {
         isClicked = !isClicked;
         Debug.Log("ToggleClick called. isClicked is now: " + isClicked);
@@ -87,8 +87,5 @@ public class MouseStuckItem : Item
     }
 
     // Implement the abstract method from Item
-    public override void OnClick()
-    {
-        ToggleClick();
-    }
+
 }

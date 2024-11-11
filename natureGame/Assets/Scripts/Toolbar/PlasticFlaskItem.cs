@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class PlasticFlaskItem : DragAndDropItem
-{   
+{
 
-    void Start()
+    public override void OnStart()
     {
         ResetPosition();
         cam = Camera.main;
