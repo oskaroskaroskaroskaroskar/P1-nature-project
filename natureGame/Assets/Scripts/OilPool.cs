@@ -2,15 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class OilPool : MonoBehaviour
+public class OilPool : MonoBehaviour , EnvironmentInfluence
 {
-    void Start()
+    public float influence { get; set; } = 0f;
+    void Start () 
     {
-        
-    }
-
-    void Update()
-    {
-        
+        Camera.main.GetComponent<GameManager>().influences.Add(this);
+       
     }
 }
