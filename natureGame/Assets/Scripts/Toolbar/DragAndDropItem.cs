@@ -7,8 +7,10 @@ public abstract class DragAndDropItem : Item
 {
     public GameObject dropObject; //object dropped when mouserelease in dropzone
     bool clicked = false;
-    bool inDropZone = false;
+    protected bool inDropZone = false;
     public List<GameObject> dropzones = new List<GameObject>(); //list of posible zones to drop item
+
+    
     public override void OnClick() //method triggered when gameobject is clicked
     {
         clicked = true;
@@ -24,6 +26,7 @@ public abstract class DragAndDropItem : Item
 
         } 
     }
+
     void OnTriggerEnter2D(Collider2D other) //method triggered when object enters any collider 
     {
         foreach (GameObject dropzone in dropzones) //runs through list of dropzones
@@ -34,6 +37,7 @@ public abstract class DragAndDropItem : Item
             }
         }
     }
+
     void OnTriggerExit2D(Collider2D other) //method triggered when object leaves any collider
     {
         foreach (GameObject dropzone in dropzones) //runs through list of dropzones
@@ -44,6 +48,7 @@ public abstract class DragAndDropItem : Item
             }
         }
     }
+
     private void OnMouseUp() //method triggered when mouse release anywhere
     {
         if (clicked == true)
@@ -52,7 +57,8 @@ public abstract class DragAndDropItem : Item
             Released();
         }
     }
-    void Released () //method called when item is relaesed/dropped
+
+    protected virtual void Released() //method called when item is relaesed/dropped
     {
         if (inDropZone == true)
         {
@@ -60,7 +66,8 @@ public abstract class DragAndDropItem : Item
         }
         ResetPosition();
     }
-    void InstObject () //method called if item is in dropzone and released
+
+    private void InstObject () //method called if item is in dropzone and released
     {
         //code to instatiate(=create) dropped object:
         GameObject obj = Instantiate(dropObject);

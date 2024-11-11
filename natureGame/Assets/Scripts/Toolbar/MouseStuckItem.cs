@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class MouseStuckItem : Item
 {
+    
     private bool isClicked = false;
     public GameObject trashPickerPrefab; // Optional if instantiating
     public GameObject trashPicker; // Assign the triangle prefab here or instantiate it from prefab
@@ -39,21 +40,21 @@ public class MouseStuckItem : Item
 
         if (Input.GetKeyDown(KeyCode.B))
         {
-            Debug.Log("Reset Position Triggered");
+            //Debug.Log("Reset Position Triggered");
             ResetPosition();
         }
     }
 
     private void OnMouseDown()
     {
-        Debug.Log("Mouse Down on TrashPickerItem");
+        //Debug.Log("Mouse Down on TrashPickerItem");
         OnClick();
     }
 
     public override void OnClick()
     {
         isClicked = !isClicked;
-        Debug.Log("ToggleClick called. isClicked is now: " + isClicked);
+        //Debug.Log("ToggleClick called. isClicked is now: " + isClicked);
 
         if (isClicked)
         {

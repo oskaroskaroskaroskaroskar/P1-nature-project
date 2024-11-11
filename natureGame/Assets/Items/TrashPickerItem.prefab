@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 2449902958182192858}
   - component: {fileID: 349187976255984933}
   - component: {fileID: 6193648553268852096}
-  - component: {fileID: 212350588228255483}
   - component: {fileID: 2567960632134811927}
   m_Layer: 0
   m_Name: TrashPickerItem
@@ -101,20 +100,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cam: {fileID: 0}
   gameobject: {fileID: 0}
-  trashPickerPrefab: {fileID: 6103200731429004745, guid: 0836adb88fc89194888d9942593ff2c4, type: 3}
-  trashPicker: {fileID: 0}
---- !u!114 &212350588228255483
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8271496618411075309}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 689a756ef89022444b40e449bd2749d4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  listPosition: {x: 0, y: 0, z: 0}
   trashPickerPrefab: {fileID: 6103200731429004745, guid: 0836adb88fc89194888d9942593ff2c4, type: 3}
   trashPicker: {fileID: 0}
 --- !u!61 &2567960632134811927
