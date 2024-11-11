@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class OiilItem : PouringItem
 {
-    void Start()
+    public override void OnStart()
     {
      
         cam = Camera.main;
