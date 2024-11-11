@@ -15,6 +15,7 @@ public abstract class PouringItem : Item
     {
         clicked = true;
     }
+    public abstract void Pour();
 
     void Update()
     {
@@ -34,8 +35,7 @@ public abstract class PouringItem : Item
             {
                 if (pouringTimer > 0.3) //amount of seconds before pouring starts when holding still
                 {
-                    //pouring
-                    Debug.Log("pouring");
+                    Pour();
                 }
                 else
                 {

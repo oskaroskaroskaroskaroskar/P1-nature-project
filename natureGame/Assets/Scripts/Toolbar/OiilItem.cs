@@ -4,11 +4,17 @@ using UnityEngine;
 
 public class OiilItem : PouringItem
 {
+    public GameObject oilStain;
     public override void OnStart()
     {
-     
+        
         cam = Camera.main;
         listPosition = new Vector3(2f, 0, 0);
         ResetPosition();
+     
+    }
+    public override void Pour()
+    {
+
     }
 }
