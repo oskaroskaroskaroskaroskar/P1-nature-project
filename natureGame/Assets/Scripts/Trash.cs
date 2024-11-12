@@ -4,26 +4,26 @@ using UnityEngine;
 
 public class Trash : MonoBehaviour , EnvironmentInfluence
 {
-    public float influence { get; set; } = 2f;
-     private Vector3 initialPosition; // Store the initial position
-    private GameManager gameManager;
-    
+    public float influence { get; set; } = -1f;
+    /*{ 
+        set { influence = 2f; } 
+        get { return influence; }
+    }*/
+    public Vector3 position;
     void Start()
     {
-        initialPosition = this.transform.position;
-        Camera.main.GetComponent<GameManager>();
+        position = this.transform.position;
+        Camera.main.GetComponent<GameManager>().influences.Add(this);
     }
 
-    public void Dropped(bool inTrashCan)
+    public void Dropped()
     {
-        if(inTrashCan)
-        {
-            gameManager.UpdateScore(influence);
-            Destroy(gameObject);
-        }
-        else
-        {
-            this.transform.position = initialPosition; // Reset to original position
-        }
+        this.transform.position = position;
     }
+   
+    void OnDisable()
+    {
+        Camera.main.GetComponent<GameManager>().influences.Remove(this);
+    }
+
 }

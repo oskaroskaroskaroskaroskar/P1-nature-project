@@ -9,6 +9,8 @@ public abstract class Item : MonoBehaviour
     public Vector3 listPosition;
     void Start()
     {
+
+        listPosition = transform.localPosition;
         OnStart();
     }
     public abstract void OnStart();
@@ -20,7 +22,7 @@ public abstract class Item : MonoBehaviour
     }
     public void ResetPosition()
     {
-        transform.position = listPosition;
+        transform.localPosition = listPosition;
     }
 
 }
