@@ -13,8 +13,6 @@ public class OiilItem : PouringItem
         EnvInfl = -10f;
 
         cam = Camera.main;
-        listPosition = new Vector3(2f, 0, 0);
-        ResetPosition();
      
     }
     public override void Pour()

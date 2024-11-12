@@ -4,5 +4,8 @@ using UnityEngine;
 
 public class TrashPickerItem : MouseStuckItem
 {
-   
+    public TrashPickerItem() : base()
+    {
+
+    }
 }
