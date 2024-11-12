@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Trash : MonoBehaviour , EnvironmentInfluence
 {
-    public float influence { get; set; } = 2f;
+    public float influence { get; set; } = -1f;
     /*{ 
         set { influence = 2f; } 
         get { return influence; }
@@ -20,4 +20,10 @@ public class Trash : MonoBehaviour , EnvironmentInfluence
     {
         this.transform.position = position;
     }
+   
+    void OnDisable()
+    {
+        Camera.main.GetComponent<GameManager>().influences.Remove(this);
+    }
+
 }
