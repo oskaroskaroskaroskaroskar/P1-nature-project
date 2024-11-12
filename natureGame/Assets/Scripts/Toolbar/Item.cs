@@ -9,6 +9,8 @@ public abstract class Item : MonoBehaviour
     public Vector3 listPosition;
     void Start()
     {
+
+        listPosition = transform.position;
         OnStart();
     }
     public abstract void OnStart();

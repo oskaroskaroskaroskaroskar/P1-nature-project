@@ -7,17 +7,15 @@ public class MouseStuckItem : Item
     private bool isClicked = false;
     public GameObject trashPickerPrefab; // Optional if instantiating
     public GameObject trashPicker; // Assign the triangle prefab here or instantiate it from prefab
-    private Vector3 initialPickupPosition;
 
     public override void OnStart()
     {
-        initialPickupPosition = transform.position;
 
         // Ensure the trashPicker is initialized correctly
         if (trashPicker == null && trashPickerPrefab != null)
         {
             // Instantiate the prefab if trashPicker is not assigned directly
-            trashPicker = Instantiate(trashPickerPrefab, initialPickupPosition, Quaternion.identity);
+            trashPicker = Instantiate(trashPickerPrefab, listPosition, Quaternion.identity);
         }
 
         trashPicker.SetActive(false); // Ensure trashPicker is hidden initially
@@ -40,7 +38,7 @@ public class MouseStuckItem : Item
         if (Input.GetKeyDown(KeyCode.B))
         {
             Debug.Log("Reset Position Triggered");
-            ResetPosition();
+            ResetItem();
         }
     }
 
@@ -63,20 +61,20 @@ public class MouseStuckItem : Item
         }
         else
         {
-            ResetPosition();
+            ResetItem();
         }
     }
 
-    private void ResetPosition()
+    private void ResetItem()
     {
         isClicked = false;
-        trashPicker.transform.position = initialPickupPosition;
         trashPicker.SetActive(false);
         SpriteRenderer sr = trashPicker.GetComponent<SpriteRenderer>();
         if (sr != null)
         {
             sr.color = Color.red;
         }
+        ResetPosition();
     }
 
     private Vector3 GetMouseWorldPosition()
