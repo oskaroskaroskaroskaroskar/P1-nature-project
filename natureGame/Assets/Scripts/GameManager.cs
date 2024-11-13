@@ -18,6 +18,7 @@ public class GameManager : MonoBehaviour
     void InfluencesChanged (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
     {
         GetInfluence();
+        UpdateScoreDisplay();
     }
 
     public void GetInfluence ()
@@ -30,20 +31,18 @@ public class GameManager : MonoBehaviour
         }
     }
 
-     // Method to directly update the score
-    public void UpdateScore(float scoreChange)
-    {
-        environmentScore += scoreChange; // Update score by the specified amount
-        UpdateScoreDisplay(); // Refresh the score display in the UI
-        Debug.Log("Environment Score Updated: " + environmentScore); // Log updated score
-    }
-
     private void UpdateScoreDisplay()
     {
         if (scoreText != null)
         {
-            scoreText.text = "Score: " + environmentScore.ToString("F0"); // Display score as an integer
+            scoreText.text = "Score: " + environmentScore.ToString("F0");
+            Debug.Log("Score Text Updated: " + scoreText.text);
+        }
+        else
+        {
+            Debug.Log("Score Text is null.");
         }
     }
-    
+
+
 }

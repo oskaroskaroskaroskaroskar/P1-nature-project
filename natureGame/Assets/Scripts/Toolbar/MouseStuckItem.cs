@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class MouseStuckItem : Item
 {
-    private bool isClicked = false;
+    protected bool isClicked = false;
     public GameObject trashPickerPrefab; // Optional if instantiating
     public GameObject trashPicker; // Assign the triangle prefab here or instantiate it from prefab
 

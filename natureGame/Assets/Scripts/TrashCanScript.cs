@@ -6,12 +6,12 @@ public class TrashCanScript : MonoBehaviour
 {
    
 
-   private void OnTriggerEnter2D(Collider2D other)
+   /*private void OnTriggerEnter2D(Collider2D other)
    {
         Trash trashItem = other.GetComponent<Trash>();
         if (trashItem != null)
         {
             trashItem.Dropped(true);
         }
-   }
+   }*/
 }
