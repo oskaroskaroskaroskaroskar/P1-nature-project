@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 1942530252069890754}
   - component: {fileID: 5387101847706890827}
   - component: {fileID: -5162636553586580873}
+  - component: {fileID: -8338699549849983539}
   m_Layer: 0
   m_Name: Picker
   m_TagString: Untagged
@@ -158,3 +159,15 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &-8338699549849983539
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6103200731429004745}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 430371c071bda38499e1b66cb56389cd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

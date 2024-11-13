@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MouseStuckItem : Item
+public abstract class MouseStuckItem : Item
 {
     protected bool isClicked = false;
     public GameObject trashPickerPrefab; // Optional if instantiating
@@ -46,8 +46,8 @@ public class MouseStuckItem : Item
     {
         Debug.Log("Mouse Down on TrashPickerItem");
         OnClick();
-    }
 
+    }
     public override void OnClick()
     {
         isClicked = !isClicked;
