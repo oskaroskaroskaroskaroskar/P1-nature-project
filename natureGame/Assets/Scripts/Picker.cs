@@ -26,13 +26,14 @@ public class Picker : MonoBehaviour
                 pickedTrash = true; 
             }
 
-        } else if (Input.GetMouseButtonUp(0))
+        } 
+        else if (Input.GetMouseButtonUp(0))
         {
             if(pickedTrash)
             {
                 Trash trash = pickedTrashObj.GetComponent<Trash>();
 
-                // Ensure the Trash component exists before calling Dropped()
+                 // Ensure the Trash component exists before calling Dropped()
                 if (trash != null)
                 {
                     trash.Dropped();
@@ -40,7 +41,9 @@ public class Picker : MonoBehaviour
             }
             clicked = false;
             pickedTrash = false;
+            pickedTrashObj = null; // reset the picked GameObject
         }
+
         if (pickedTrash)
         {
             var mouseWorldPosition = cam.ScreenToWorldPoint(Input.mousePosition);
@@ -61,5 +64,11 @@ public class Picker : MonoBehaviour
             hoverTrashList.Remove(other.gameObject);
         }
     }
-   
+
+    // Method to get the currently picked trash item
+    public GameObject GetPickedTrash()
+    {
+        return pickedTrashObj;
+    }
+
 }
