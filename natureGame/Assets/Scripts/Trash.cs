@@ -10,6 +10,10 @@ public class Trash : MonoBehaviour , EnvironmentInfluence
         get { return influence; }
     }*/
     public Vector3 position;
+    public bool inTrashCan = false;
+
+
+
     void Start()
     {
         position = this.transform.position;
@@ -17,8 +21,12 @@ public class Trash : MonoBehaviour , EnvironmentInfluence
     }
 
     public void Dropped()
-    {
-        this.transform.position = position;
+    {   
+        if (!inTrashCan)
+        {
+            this.transform.position = position;
+        }
+        
     }
    
     void OnDisable()
