@@ -30,7 +30,13 @@ public class Picker : MonoBehaviour
         {
             if(pickedTrash)
             {
-               // Trash trash = pickedTrashObj(Trash);
+                Trash trash = pickedTrashObj.GetComponent<Trash>();
+
+                // Ensure the Trash component exists before calling Dropped()
+                if (trash != null)
+                {
+                    trash.Dropped();
+                }
             }
             clicked = false;
             pickedTrash = false;
