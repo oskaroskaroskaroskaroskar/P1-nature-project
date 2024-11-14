@@ -4,6 +4,8 @@ using UnityEngine;
 
 public abstract class MouseStuckItem : Item
 {
+
+    public static bool mouseStuckActive = false;
     protected bool isClicked = false;
     public GameObject trashPickerPrefab; // Optional if instantiating
     public GameObject trashPicker; // Assign the triangle prefab here or instantiate it from prefab
@@ -56,6 +58,7 @@ public abstract class MouseStuckItem : Item
         if (isClicked)
         {
             trashPicker.SetActive(true);
+            mouseStuckActive = true;
             trashPicker.transform.position = transform.position;
             Debug.Log("Trash Picker activated and positioned.");
         }
@@ -69,6 +72,7 @@ public abstract class MouseStuckItem : Item
     {
         isClicked = false;
         trashPicker.SetActive(false);
+        mouseStuckActive = false;
         SpriteRenderer sr = trashPicker.GetComponent<SpriteRenderer>();
         if (sr != null)
         {
