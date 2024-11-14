@@ -39,28 +39,28 @@ public abstract class MouseStuckItem : Item
 
         if (Input.GetKeyDown(KeyCode.B))
         {
-            Debug.Log("Reset Position Triggered");
+            // Debug.Log("Reset Position Triggered");
             ResetItem();
         }
     }
 
     private void OnMouseDown()
     {
-        Debug.Log("Mouse Down on TrashPickerItem");
+        // Debug.Log("Mouse Down on TrashPickerItem");
         OnClick();
 
     }
     public override void OnClick()
     {
         isClicked = !isClicked;
-        Debug.Log("ToggleClick called. isClicked is now: " + isClicked);
+        // Debug.Log("ToggleClick called. isClicked is now: " + isClicked);
 
         if (isClicked)
         {
             trashPicker.SetActive(true);
             mouseStuckActive = true;
             trashPicker.transform.position = transform.position;
-            Debug.Log("Trash Picker activated and positioned.");
+            // Debug.Log("Trash Picker activated and positioned.");
         }
         else
         {
