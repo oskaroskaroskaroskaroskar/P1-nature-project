@@ -6,7 +6,7 @@ public class Picker : MonoBehaviour
 {
     public Camera cam;
     bool hoversTrash = false;
-    GameObject hoveredTrash;
+    bool hoversCan = false;
     GameObject pickedTrashObj;
     bool pickedTrash = false;
     bool clicked = false;
@@ -36,7 +36,15 @@ public class Picker : MonoBehaviour
                  // Ensure the Trash component exists before calling Dropped()
                 if (trash != null)
                 {
-                    trash.Dropped();
+                    if (hoversCan)
+                    {
+                        Destroy(trash.gameObject);
+                    }
+                    else
+                    {
+
+                        trash.Dropped();
+                    }
                 }
             }
             clicked = false;
@@ -54,7 +62,10 @@ public class Picker : MonoBehaviour
     {
         if (other.tag == "trash")
         {
-             hoverTrashList.Add(other.gameObject);
+            hoverTrashList.Add(other.gameObject);
+        } else if (other.tag == "trashcan")
+        {
+            hoversCan = true;
         }
     }
     void OnTriggerExit2D(Collider2D other)
@@ -62,6 +73,9 @@ public class Picker : MonoBehaviour
         if (other.tag == "trash")
         {
             hoverTrashList.Remove(other.gameObject);
+        } else if (other.tag == "trashcan")
+        {
+            hoversCan = false;
         }
     }
 

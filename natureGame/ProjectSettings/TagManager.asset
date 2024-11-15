@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Dropzone
   - trash
+  - trashcan
   layers:
   - Default
   - TransparentFX

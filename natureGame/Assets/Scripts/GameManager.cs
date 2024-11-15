@@ -18,7 +18,7 @@ public class GameManager : MonoBehaviour
     void InfluencesChanged (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
     {
         GetInfluence();
-        UpdateScoreDisplay();
+        
     }
 
     public void GetInfluence ()
@@ -29,6 +29,7 @@ public class GameManager : MonoBehaviour
             environmentScore += infl.influence;
 
         }
+        UpdateScoreDisplay();
     }
 
     private void UpdateScoreDisplay()
