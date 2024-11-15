@@ -14,6 +14,7 @@ public abstract class PouringItem : Item
     public override void OnClick() //method triggered when gameobject is clicked
     {
         clicked = true;
+        EnableDropzones();
     }
     public abstract void Pour();
 
@@ -68,9 +69,36 @@ public abstract class PouringItem : Item
     {
         if (clicked == true)
         {
+            DisableDropzones();
             clicked = false;
             ResetPosition();
         }
     }
-   
+    void EnableDropzones()
+    {
+        foreach (GameObject DZ in pouringZones)
+        {
+            Dropzone dropzone = DZ.GetComponent<Dropzone>();
+
+            // Ensure the Trash component exists before calling Dropped()
+            if (dropzone != null)
+            {
+                dropzone.Activate();
+            }
+        }
+    }
+    void DisableDropzones()
+    {
+        foreach (GameObject DZ in pouringZones)
+        {
+            Dropzone dropzone = DZ.GetComponent<Dropzone>();
+
+            // Ensure the Trash component exists before calling Dropped()
+            if (dropzone != null)
+            {
+                dropzone.DeActivate();
+            }
+        }
+    }
+
 }
