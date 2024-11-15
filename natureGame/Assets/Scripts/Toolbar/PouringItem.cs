@@ -6,10 +6,10 @@ using UnityEngine;
 public abstract class PouringItem : Item
 {
     bool clicked = false;
-    bool inPourZone = false;
     public List<GameObject> pouringZones = new List<GameObject>();
     Vector3 lastMousePosition; //variable used to detect change in mouseposition
     float pouringTimer = 0f; //used to make delay for pouring
+    public List<GameObject> inDropzones = new List<GameObject>();
 
     public override void OnClick() //method triggered when gameobject is clicked
     {
@@ -32,7 +32,7 @@ public abstract class PouringItem : Item
                 pouringTimer = 0f;
 
             }
-            else if (inPourZone == true) // else if mouse is still, checks if mouse is also in pouring zone
+            else if (inDropzones.Count > 0) // else if mouse is still, checks if mouse is also in pouring zone
             {
                 if (pouringTimer > 0.3) //amount of seconds before pouring starts when holding still
                 {
@@ -51,7 +51,7 @@ public abstract class PouringItem : Item
         {
             if (other.gameObject == pouringZone) //checks if triggered collider is attached to pouring zone
             {
-                inPourZone = true;
+                inDropzones.Add(pouringZone);
             }
         }
     }
@@ -61,7 +61,7 @@ public abstract class PouringItem : Item
         {
             if (other.gameObject == pouringZone) //checks if triggered collider is attached to pouring zone
             {
-                inPourZone = false;
+                inDropzones.Remove(pouringZone);
             }
         }
     }

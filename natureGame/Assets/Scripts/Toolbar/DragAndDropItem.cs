@@ -7,8 +7,8 @@ public abstract class DragAndDropItem : Item
 {
     public GameObject dropObject; //object dropped when mouserelease in dropzone
     bool clicked = false;
-    protected bool inDropZone = false;
     public List<GameObject> dropzones = new List<GameObject>(); //list of posible zones to drop item
+    public List<GameObject> inDropzones = new List<GameObject>();
 
     
     public override void OnClick() //method triggered when gameobject is clicked
@@ -34,7 +34,7 @@ public abstract class DragAndDropItem : Item
         {
             if (other.gameObject==dropzone) //checks if triggered collider is attached to dropzone
             {
-                inDropZone = true;
+                inDropzones.Add(dropzone);
             }
         }
     }
@@ -45,7 +45,7 @@ public abstract class DragAndDropItem : Item
         {
             if (other.gameObject == dropzone) //checks if triggered collider is attached to dropzone
             {
-                inDropZone = false;
+                inDropzones.Remove(dropzone);
             }
         }
     }
@@ -62,7 +62,7 @@ public abstract class DragAndDropItem : Item
 
     protected virtual void Released() //method called when item is relaesed/dropped
     {
-        if (inDropZone == true)
+        if (inDropzones.Count > 0)
         {
             InstObject();
         }
