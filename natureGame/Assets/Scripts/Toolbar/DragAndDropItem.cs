@@ -14,6 +14,7 @@ public abstract class DragAndDropItem : Item
     public override void OnClick() //method triggered when gameobject is clicked
     {
         clicked = true;
+        EnableDropzones();
     }
    
     void Update()
@@ -53,6 +54,7 @@ public abstract class DragAndDropItem : Item
     {
         if (clicked == true)
         {
+            DisableDropzones();
             clicked = false;
             Released();
         }
@@ -74,5 +76,30 @@ public abstract class DragAndDropItem : Item
         obj.transform.position = this.transform.position;
        
     }
-    
+    void EnableDropzones ()
+    {
+        foreach (GameObject DZ in dropzones)
+        {
+            Dropzone dropzone = DZ.GetComponent<Dropzone>();
+
+            // Ensure the Trash component exists before calling Dropped()
+            if (dropzone != null)
+            {
+                dropzone.Activate();
+            }
+        }
+    }   
+    void DisableDropzones ()
+    {
+        foreach (GameObject DZ in dropzones)
+        {
+            Dropzone dropzone = DZ.GetComponent<Dropzone>();
+
+            // Ensure the Trash component exists before calling Dropped()
+            if (dropzone != null)
+            {
+                dropzone.DeActivate();
+            }
+        }
+    }
 }
