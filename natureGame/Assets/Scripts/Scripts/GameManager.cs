@@ -9,6 +9,11 @@ public class GameManager : MonoBehaviour
     public float environmentScore = 0f; // Holds the current environmental score
     public Text scoreText; // Reference to the Unity UI Text component for displaying score
     public ObservableCollection<EnvironmentInfluence> influences;
+    
+    
+    public static GameManager Instance; // Singleton instance
+    private int destroyedCount = 0; // Counter for destroyed objects
+
 
     public GameManager() : base() {
         this.influences = new ObservableCollection<EnvironmentInfluence>();
@@ -45,5 +50,35 @@ public class GameManager : MonoBehaviour
         }
     }
 
+
+
+    void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
+
+    public void IncrementDestroyedCount()
+    {
+        destroyedCount++;
+        Debug.Log("Destroyed count: " + destroyedCount);
+
+        // Here you can trigger events, such as updating a trash can image
+        if (destroyedCount % 1 == 0)
+        {
+            FindObjectOfType<TrashAnim>().AddItemToTrash();
+        }
+    }
+
+    public int GetDestroyedCount()
+    {
+        return destroyedCount;
+    }
 
 }

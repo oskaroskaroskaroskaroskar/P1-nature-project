@@ -11,10 +11,16 @@ public class Picker : MonoBehaviour
     bool pickedTrash = false;
     bool clicked = false;
     List<GameObject> hoverTrashList = new List<GameObject> ();
+    
+    
+    public static Picker Instance; // Singleton instance
+
+
     void Start()
     {
         cam = Camera.main;
     }
+
     void Update()
     {
         if (Input.GetMouseButtonDown(0) && !clicked)
@@ -38,11 +44,14 @@ public class Picker : MonoBehaviour
                 {
                     if (hoversCan)
                     {
+                        GameManager.Instance.IncrementDestroyedCount();
+
                         Destroy(trash.gameObject);
+                        
                     }
                     else
                     {
-
+                        Instance = this;
                         trash.Dropped();
                     }
                 }
@@ -63,7 +72,8 @@ public class Picker : MonoBehaviour
         if (other.tag == "trash")
         {
             hoverTrashList.Add(other.gameObject);
-        } else if (other.tag == "trashcan")
+        } 
+        else if (other.tag == "trashcan")
         {
             hoversCan = true;
         }
@@ -73,16 +83,11 @@ public class Picker : MonoBehaviour
         if (other.tag == "trash")
         {
             hoverTrashList.Remove(other.gameObject);
-        } else if (other.tag == "trashcan")
+
+        } 
+        else if (other.tag == "trashcan")
         {
             hoversCan = false;
         }
     }
-
-    // Method to get the currently picked trash item
-    public GameObject GetPickedTrash()
-    {
-        return pickedTrashObj;
-    }
-
 }
