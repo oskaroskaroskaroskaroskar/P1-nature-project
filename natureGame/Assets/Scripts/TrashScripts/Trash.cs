@@ -33,5 +33,15 @@ public class Trash : MonoBehaviour , EnvironmentInfluence
     {
         Camera.main.GetComponent<GameManager>().influences.Remove(this);
     }
+    
+    
+    void OnDestroy()
+    {
+        // Notify the TrashManager when this object is destroyed
+        if (Picker.Instance != null)
+        {
+            GameManager.Instance.IncrementDestroyedCount();
+        }
+    }
 
 }
