@@ -14,6 +14,7 @@ public class Trash : MonoBehaviour , EnvironmentInfluence
     {
         position = this.transform.position;
         Camera.main.GetComponent<GameManager>().influences.Add(this);
+        PlasticFlaskItem.count++;
     }
 
     public void Dropped()
@@ -28,6 +29,7 @@ public class Trash : MonoBehaviour , EnvironmentInfluence
     void OnDisable()
     {
         Camera.main.GetComponent<GameManager>().influences.Remove(this);
+        PlasticFlaskItem.count--;
     }
     
     
