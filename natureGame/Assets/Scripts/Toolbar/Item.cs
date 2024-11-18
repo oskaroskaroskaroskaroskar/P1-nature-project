@@ -17,10 +17,14 @@ public abstract class Item : MonoBehaviour
     public abstract void OnClick();
     void OnMouseDown ()
     {
-        if (MouseStuckItem.mouseStuckActive == false||this.GetType().BaseType.Name=="MouseStuckItem")
+        if (MouseStuckItem.mouseStuckActive == false)
         {
             Debug.Log(this.GetType().BaseType.Name);
             OnClick();
+        } else
+        {
+            Debug.Log("klikket");
+            FindObjectOfType<MouseStuckItem>().Clicked();
         }
     }
     public void ResetPosition()

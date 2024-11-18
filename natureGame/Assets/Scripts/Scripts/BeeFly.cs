@@ -1,8 +1,7 @@
 using UnityEngine;
 
-public class BeeFly : MonoBehaviour, EnvironmentInfluence
+public class BeeFly : MonoBehaviour
 {
-    public float influence { get; set; } = 2f;
     private Vector2 startPosition;
     private Vector2 targetPosition;
     private float areaSize = 2f; // Define the small area size
@@ -13,7 +12,6 @@ public class BeeFly : MonoBehaviour, EnvironmentInfluence
     {
         startPosition = transform.position;
         GenerateNewTargetPosition();
-        Camera.main.GetComponent<GameManager>().influences.Add(this);
     }
 
     void Update()
@@ -60,8 +58,5 @@ public class BeeFly : MonoBehaviour, EnvironmentInfluence
         Destroy(this.transform.parent.gameObject, 1f); // Destroy after 3 seconds
         
     }
-    void OnDisable()
-    {
-        Camera.main.GetComponent<GameManager>().influences.Remove(this);
-    }
+    
 }
