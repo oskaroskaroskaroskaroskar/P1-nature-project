@@ -1790,18 +1790,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7372275024044686917, guid: ce848e8980154ba4c9a494ebce9268d6, type: 3}
   m_PrefabInstance: {fileID: 1832769867}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &858426031
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 764522984}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 34fd8b37193716943ba06361b4aae888, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!50 &858426032
 Rigidbody2D:
   serializedVersion: 4
@@ -2966,6 +2954,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BeeAnimal
       objectReference: {fileID: 0}
+    - target: {fileID: 3636718236936670033, guid: ce848e8980154ba4c9a494ebce9268d6, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
     - target: {fileID: 4314184477853617353, guid: ce848e8980154ba4c9a494ebce9268d6, type: 3}
       propertyPath: speed
       value: 1
@@ -2984,7 +2976,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5303334138647073601, guid: ce848e8980154ba4c9a494ebce9268d6, type: 3}
       propertyPath: m_TagString
-      value: Bee
+      value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: 7372275024044686917, guid: ce848e8980154ba4c9a494ebce9268d6, type: 3}
       propertyPath: m_LocalPosition.x
@@ -3031,9 +3023,6 @@ PrefabInstance:
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 3636718236936670033, guid: ce848e8980154ba4c9a494ebce9268d6, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 858426031}
     - targetCorrespondingSourceObject: {fileID: 3636718236936670033, guid: ce848e8980154ba4c9a494ebce9268d6, type: 3}
       insertIndex: -1
       addedObject: {fileID: 858426032}
