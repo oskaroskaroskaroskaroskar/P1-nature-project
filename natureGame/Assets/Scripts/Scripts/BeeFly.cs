@@ -12,6 +12,7 @@ public class BeeFly : MonoBehaviour
     {
         startPosition = transform.position;
         GenerateNewTargetPosition();
+        BeeItem.count++;
     }
 
     void Update()
@@ -58,5 +59,9 @@ public class BeeFly : MonoBehaviour
         Destroy(this.transform.parent.gameObject, 1f); // Destroy after 3 seconds
         
     }
-    
+    public void OnDisable()
+    {
+        BeeItem.count--;
+    }
+
 }
