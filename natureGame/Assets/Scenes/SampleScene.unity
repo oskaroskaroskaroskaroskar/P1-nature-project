@@ -1140,11 +1140,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!4 &673888294 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 7929760238721012254, guid: e35e0dcf52aad09489911dcf7e806896, type: 3}
-  m_PrefabInstance: {fileID: 3607199003619922665}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &709679376
 GameObject:
   m_ObjectHideFlags: 0
@@ -1739,7 +1734,6 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1736590338}
-  - {fileID: 673888294}
   m_Father: {fileID: 1156010348}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -3264,91 +3258,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2033318528}
   m_CullTransparentMesh: 1
---- !u!1001 &3607199003619922665
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 846485600}
-    m_Modifications:
-    - target: {fileID: 3066438354620545409, guid: e35e0dcf52aad09489911dcf7e806896, type: 3}
-      propertyPath: oilStain
-      value: 
-      objectReference: {fileID: 1787246119}
-    - target: {fileID: 3066438354620545409, guid: e35e0dcf52aad09489911dcf7e806896, type: 3}
-      propertyPath: pouringZones.Array.data[0]
-      value: 
-      objectReference: {fileID: 140309725}
-    - target: {fileID: 4548519527941692356, guid: e35e0dcf52aad09489911dcf7e806896, type: 3}
-      propertyPath: m_IsTrigger
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7929760238721012254, guid: e35e0dcf52aad09489911dcf7e806896, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 29.133337
-      objectReference: {fileID: 0}
-    - target: {fileID: 7929760238721012254, guid: e35e0dcf52aad09489911dcf7e806896, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 29.133337
-      objectReference: {fileID: 0}
-    - target: {fileID: 7929760238721012254, guid: e35e0dcf52aad09489911dcf7e806896, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 29.133337
-      objectReference: {fileID: 0}
-    - target: {fileID: 7929760238721012254, guid: e35e0dcf52aad09489911dcf7e806896, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7929760238721012254, guid: e35e0dcf52aad09489911dcf7e806896, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7929760238721012254, guid: e35e0dcf52aad09489911dcf7e806896, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: -2622.0002
-      objectReference: {fileID: 0}
-    - target: {fileID: 7929760238721012254, guid: e35e0dcf52aad09489911dcf7e806896, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7929760238721012254, guid: e35e0dcf52aad09489911dcf7e806896, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7929760238721012254, guid: e35e0dcf52aad09489911dcf7e806896, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7929760238721012254, guid: e35e0dcf52aad09489911dcf7e806896, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7929760238721012254, guid: e35e0dcf52aad09489911dcf7e806896, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7929760238721012254, guid: e35e0dcf52aad09489911dcf7e806896, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7929760238721012254, guid: e35e0dcf52aad09489911dcf7e806896, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8310651067155657244, guid: e35e0dcf52aad09489911dcf7e806896, type: 3}
-      propertyPath: m_Name
-      value: OilItem
-      objectReference: {fileID: 0}
-    - target: {fileID: 8310651067155657244, guid: e35e0dcf52aad09489911dcf7e806896, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: e35e0dcf52aad09489911dcf7e806896, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
