@@ -10,7 +10,6 @@ public abstract class DragAndDropItem : Item
     public List<GameObject> dropzones = new List<GameObject>(); //list of posible zones to drop item
     public List<GameObject> inDropzones = new List<GameObject>();
 
-    
     public override void OnClick() //method triggered when gameobject is clicked
     {
         clicked = true;

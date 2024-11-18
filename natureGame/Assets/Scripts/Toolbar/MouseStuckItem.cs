@@ -9,7 +9,7 @@ public abstract class MouseStuckItem : Item
     protected bool isClicked = false;
     public GameObject trashPickerPrefab; // Optional if instantiating
     public GameObject trashPicker; // Assign the triangle prefab here or instantiate it from prefab
-
+    public GameObject highlight;
     public override void OnStart()
     {
 
@@ -57,6 +57,7 @@ public abstract class MouseStuckItem : Item
 
         if (isClicked)
         {
+            highlight.GetComponent<Renderer>().enabled = true;
             trashPicker.SetActive(true);
             mouseStuckActive = true;
             trashPicker.transform.position = transform.position;
@@ -64,6 +65,7 @@ public abstract class MouseStuckItem : Item
         }
         else
         {
+            highlight.GetComponent<Renderer>().enabled = false;
             ResetItem();
         }
     }
