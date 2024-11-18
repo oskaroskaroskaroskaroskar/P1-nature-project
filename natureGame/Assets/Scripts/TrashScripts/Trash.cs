@@ -16,6 +16,7 @@ public class Trash : MonoBehaviour , EnvironmentInfluence
         position = this.transform.position;
         Camera.main.GetComponent<GameManager>().influences.Add(this);
 
+
         bool b = new System.Random().Next(2) == 0;
         if (b) 
         { 
@@ -34,6 +35,7 @@ public class Trash : MonoBehaviour , EnvironmentInfluence
         }
         float scale = 0.4f - yPosition/2.5f;
         this.transform.localScale = new Vector3(scale, scale,1);
+
     }
 
     public void Dropped()
