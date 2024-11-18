@@ -1,7 +1,8 @@
 using UnityEngine;
 
-public class BeeFly : MonoBehaviour
+public class BeeFly : MonoBehaviour, EnvironmentInfluence
 {
+    public float influence { get; set; } = 2f;
     private Vector2 startPosition;
     private Vector2 targetPosition;
     private float areaSize = 2f; // Define the small area size
@@ -12,6 +13,7 @@ public class BeeFly : MonoBehaviour
     {
         startPosition = transform.position;
         GenerateNewTargetPosition();
+        Camera.main.GetComponent<GameManager>().influences.Add(this);
     }
 
     void Update()
@@ -22,9 +24,10 @@ public class BeeFly : MonoBehaviour
             MoveInArea();
 
             // Check the score in every frame
-            if (GameManager.Instance.environmentScore <= -2)
+            if (Camera.main.GetComponent<GameManager>().environmentScore <= -2)
             {
-                DestroyAllBeesWithTag();
+                FlyAwayAndDestroy();
+                //DestroyAllBeesWithTag();
             }
         }
     }
@@ -52,23 +55,33 @@ public class BeeFly : MonoBehaviour
 
     private void DestroyAllBeesWithTag()
     {
+        /*
         GameObject[] bees = GameObject.FindGameObjectsWithTag("Bee");
         foreach (GameObject bee in bees)
         {
+
             // Fly away behavior for each bee before destruction
             BeeFly beeFly = bee.GetComponent<BeeFly>();
+
+            Debug.Log("flyver op i skyen");
+            beeFly.FlyAwayAndDestroy();
             if (beeFly != null && !beeFly.isFlyingAway)
             {
-                beeFly.FlyAwayAndDestroy();
+
             }
-        }
+        }*/
     }
 
-    private void FlyAwayAndDestroy()
+    public void FlyAwayAndDestroy()
     {
-        isFlyingAway = true;
+        this.isFlyingAway = true;
         Vector2 flyAwayDirection = new Vector2(Random.Range(-1f, 1f), 1f).normalized; // Fly upwards
-        GetComponent<Rigidbody2D>().velocity = flyAwayDirection * 2f; // Adjust speed as needed
-        Destroy(gameObject, 1f); // Destroy after 3 seconds
+        this.GetComponent<Rigidbody2D>().velocity = flyAwayDirection * 2f; // Adjust speed as needed
+        Destroy(this.transform.parent.gameObject, 1f); // Destroy after 3 seconds
+        
+    }
+    void OnDisable()
+    {
+        Camera.main.GetComponent<GameManager>().influences.Remove(this);
     }
 }

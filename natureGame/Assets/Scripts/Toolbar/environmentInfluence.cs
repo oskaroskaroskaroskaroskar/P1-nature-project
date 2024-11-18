@@ -5,4 +5,5 @@ using UnityEngine;
 public interface EnvironmentInfluence
 {
     public float influence { get; set; }
+
 }

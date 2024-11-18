@@ -5,10 +5,6 @@ using UnityEngine;
 public class Trash : MonoBehaviour , EnvironmentInfluence
 {
     public float influence { get; set; } = -1f;
-    /*{ 
-        set { influence = 2f; } 
-        get { return influence; }
-    }*/
     public Vector3 position;
     public bool inTrashCan = false;
 
