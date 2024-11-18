@@ -52,26 +52,6 @@ public class BeeFly : MonoBehaviour, EnvironmentInfluence
         );
     }
 
-
-    private void DestroyAllBeesWithTag()
-    {
-        /*
-        GameObject[] bees = GameObject.FindGameObjectsWithTag("Bee");
-        foreach (GameObject bee in bees)
-        {
-
-            // Fly away behavior for each bee before destruction
-            BeeFly beeFly = bee.GetComponent<BeeFly>();
-
-            Debug.Log("flyver op i skyen");
-            beeFly.FlyAwayAndDestroy();
-            if (beeFly != null && !beeFly.isFlyingAway)
-            {
-
-            }
-        }*/
-    }
-
     public void FlyAwayAndDestroy()
     {
         this.isFlyingAway = true;
