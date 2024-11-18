@@ -42,7 +42,7 @@ public class GameManager : MonoBehaviour
         if (scoreText != null)
         {
             scoreText.text = "Score: " + environmentScore.ToString("F0");
-            Debug.Log("Score Text Updated: " + scoreText.text);
+            //Debug.Log("Score Text Updated: " + scoreText.text);
         }
         else
         {
