@@ -4,9 +4,9 @@ using UnityEngine;
 using UnityEngine.UIElements;
 
 
-public class Trash : MonoBehaviour , EnvironmentInfluence
+public abstract class Trash : MonoBehaviour
 {
-    public float influence { get; set; } = -1f;
+    
     public Vector3 position;
     public bool inTrashCan = false;
     int xTwist = 1;
@@ -15,8 +15,6 @@ public class Trash : MonoBehaviour , EnvironmentInfluence
     void Start()
     {
         position = this.transform.position;
-        Camera.main.GetComponent<GameManager>().influences.Add(this);
-
 
         bool b = new System.Random().Next(2) == 0;
         if (b)
@@ -25,10 +23,9 @@ public class Trash : MonoBehaviour , EnvironmentInfluence
             xTwist = -1;
             
         }
-
-        
-        PlasticFlaskItem.count++;
+        OnStart();
     }
+    public abstract void OnStart();
     void Update()
     {
         fixScale();
@@ -54,14 +51,6 @@ public class Trash : MonoBehaviour , EnvironmentInfluence
         }
         
     }
-   
-    void OnDisable()
-    {
-        Camera.main.GetComponent<GameManager>().influences.Remove(this);
-        PlasticFlaskItem.count--;
-    }
-    
-    
     void OnDestroy()
     {
         // Notify the TrashManager when this object is destroyed
@@ -70,5 +59,4 @@ public class Trash : MonoBehaviour , EnvironmentInfluence
             GameManager.Instance.IncrementDestroyedCount();
         }
     }
-
 }
