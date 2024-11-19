@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlasticFlaskItem : DragAndDropItem
+public class GarbageItem : DragAndDropItem
 {
     public static int count = 0;
     public override void OnStart()
@@ -15,7 +15,8 @@ public class PlasticFlaskItem : DragAndDropItem
         if (count < maxCount)
         {
             return false;
-        } else return true;
+        }
+        else return true;
     }
 
 }
