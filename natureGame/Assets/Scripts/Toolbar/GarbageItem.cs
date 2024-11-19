@@ -2,12 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BeeItem : DragAndDropItem
+public class GarbageItem : DragAndDropItem
 {
     public static int count = 0;
     public override void OnStart()
     {
-        maxCount = 5;
+        maxCount = 20;
         cam = Camera.main;
     }
     public override bool FilledUp()
@@ -18,4 +18,5 @@ public class BeeItem : DragAndDropItem
         }
         else return true;
     }
+
 }

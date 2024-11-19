@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Security.Cryptography.X509Certificates;
 using UnityEngine;
 
 public abstract class MouseStuckItem : Item
@@ -7,9 +8,11 @@ public abstract class MouseStuckItem : Item
 
     public static bool mouseStuckActive = false;
     protected bool isClicked = false;
+    bool clickedDown = false;
     public GameObject trashPickerPrefab; // Optional if instantiating
     public GameObject trashPicker; // Assign the triangle prefab here or instantiate it from prefab
-
+    public GameObject highlight;
+    
     public override void OnStart()
     {
 
@@ -44,19 +47,26 @@ public abstract class MouseStuckItem : Item
         }
     }
 
-    private void OnMouseDown()
-    {
-        // Debug.Log("Mouse Down on TrashPickerItem");
-        OnClick();
-
-    }
     public override void OnClick()
+    {
+        clickedDown = true;
+    }
+    public void OnMouseUp()
+    {
+        if (clickedDown)
+        {
+            clickedDown = false;
+            Clicked();
+        }
+    }
+    public void Clicked()
     {
         isClicked = !isClicked;
         // Debug.Log("ToggleClick called. isClicked is now: " + isClicked);
 
         if (isClicked)
         {
+            highlight.GetComponent<Renderer>().enabled = true;
             trashPicker.SetActive(true);
             mouseStuckActive = true;
             trashPicker.transform.position = transform.position;
@@ -64,6 +74,7 @@ public abstract class MouseStuckItem : Item
         }
         else
         {
+            highlight.GetComponent<Renderer>().enabled = false;
             ResetItem();
         }
     }

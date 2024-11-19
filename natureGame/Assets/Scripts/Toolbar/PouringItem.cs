@@ -34,7 +34,7 @@ public abstract class PouringItem : Item
             }
             else if (inDropzones.Count > 0) // else if mouse is still, checks if mouse is also in pouring zone
             {
-                if (pouringTimer > 0.3) //amount of seconds before pouring starts when holding still
+                if (pouringTimer > 0.2) //amount of seconds before pouring starts when holding still
                 {
                     Pour();
                 }
