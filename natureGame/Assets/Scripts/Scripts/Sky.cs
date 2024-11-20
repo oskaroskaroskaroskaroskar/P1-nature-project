@@ -4,69 +4,48 @@ using UnityEngine;
 
 public class Sky : MonoBehaviour
 {
-    public float distancePerScore = 0.5f; // Distance to move downward per unit of environmentScore
-    public float smoothSpeed = 2f; // Speed of smooth movement
-    public float minYPosition = 3.98f; // Minimum Y position for the sky
-    public SpriteRenderer spriteRenderer; // Reference to the SpriteRenderer
+    public float distancePerScore = -0.1f; // Distance to move downward per unit of environmentScore
+    public float smoothSpeed = 2f; // Speed of smoothing
+    public float minYPosition = 3.98f; // Minimum Y position for the sky object
 
-    private Vector3 initialPosition; // Initial position of the sky
-    private Vector3 targetPosition; // Target position for smooth movement
+    private Vector2 initialPosition; // Starting position of the object
+    private Vector2 targetPosition; // Target position to move toward
 
     void Start()
     {
-        // Store the initial position of the sky
+        // Store the initial position of the sky object
         initialPosition = transform.position;
         targetPosition = initialPosition;
 
-        // Subscribe to environment score changes
-        GameManager.Instance.influences.CollectionChanged += OnEnvironmentScoreChanged;
-
-        // Initialize alpha
-        SetAlpha(0f); // Fully opaque at the start
+        // Subscribe to environment score changes if GameManager is available
+        if (GameManager.Instance != null)
+        {
+            GameManager.Instance.influences.CollectionChanged += OnEnvironmentScoreChanged;
+        }
     }
 
     private void OnEnvironmentScoreChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
     {
-        UpdateTargetPosition(GameManager.Instance.environmentScore);
-        UpdateAlpha(GameManager.Instance.environmentScore);
-    }
+        // Calculate the target Y position to move downward as the score increases
+        float targetYPosition = initialPosition.y - GameManager.Instance.environmentScore * distancePerScore;
 
-    private void UpdateTargetPosition(float environmentScore)
-    {
-        // Calculate the target Y position based on the score
-        float newYPosition = initialPosition.y - environmentScore * distancePerScore;
+        // Clamp the Y position so it does not go below the minimum
+        targetYPosition = Mathf.Max(targetYPosition, minYPosition);
 
-        // Clamp the Y position to stop at the minimum value
-        newYPosition = Mathf.Max(newYPosition, minYPosition);
-
-        // Set the target position for smooth movement
-        targetPosition = new Vector3(transform.position.x, newYPosition, transform.position.z);
-    }
-
-    private void UpdateAlpha(float environmentScore)
-    {
-        // Adjust alpha based on the negative environmentScore
-        float alpha = Mathf.Clamp01(1f + (environmentScore / 10f)); // Reduce alpha every -10 points
-        SetAlpha(alpha);
-    }
-
-    private void SetAlpha(float alpha)
-    {
-        // Set the alpha value of the SpriteRenderer's color
-        Color color = spriteRenderer.color;
-        color.a = alpha;
-        spriteRenderer.color = color;
+        // Set the target position
+        targetPosition = new Vector2(initialPosition.x, targetYPosition);
     }
 
     void Update()
     {
-        // Smoothly interpolate the Y position of the sky toward the target position
-        transform.position = Vector3.Lerp(transform.position, targetPosition, Time.deltaTime * smoothSpeed);
+        // Smoothly interpolate the position of the sky object to the target position
+        Vector2 currentPosition = transform.position;
+        transform.position = Vector2.Lerp(currentPosition, targetPosition, Time.deltaTime * smoothSpeed);
     }
 
     private void OnDestroy()
     {
-        // Unsubscribe when this object is destroyed to avoid memory leaks
+        // Unsubscribe to avoid memory leaks if the object is destroyed
         if (GameManager.Instance != null)
         {
             GameManager.Instance.influences.CollectionChanged -= OnEnvironmentScoreChanged;
