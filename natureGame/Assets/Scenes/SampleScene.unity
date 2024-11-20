@@ -2337,6 +2337,10 @@ CanvasRenderer:
   m_GameObject: {fileID: 920249070}
   m_CullTransparentMesh: 1
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+
+>>>>>>> 85103d1882425fef415b46a2363cea4447965950
 --- !u!1 &972425630
 GameObject:
   m_ObjectHideFlags: 0
@@ -2378,15 +2382,21 @@ RectTransform:
   m_SizeDelta: {x: 43.97, y: 36.24}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &972425632
+<<<<<<< HEAD
 =======
 --- !u!114 &920249074
 >>>>>>> main
+=======
+>>>>>>> 85103d1882425fef415b46a2363cea4447965950
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 85103d1882425fef415b46a2363cea4447965950
   m_GameObject: {fileID: 972425630}
   m_Enabled: 1
   m_EditorHideFlags: 0
@@ -2492,17 +2502,20 @@ BoxCollider2D:
   m_Size: {x: 44.14144, y: 35.485405}
   m_EdgeRadius: 0
 --- !u!114 &972425636
+
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 972425630}
+
+  m_GameObject: {fileID: 920249070}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b74f02592b099724e80ef87d85ba7f33, type: 3}
+  m_Script: {fileID: 11500000, guid: 5ed1802be1a8f4446a125cc0bb07220c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+<<<<<<< HEAD
   cam: {fileID: 0}
   gameobject: {fileID: 972425630}
   listPosition: {x: 0, y: 0, z: 0}
@@ -2521,6 +2534,10 @@ MonoBehaviour:
   distancePerScore: 0.1
   smoothSpeed: 2
 >>>>>>> main
+=======
+  distancePerScore: 0.1
+  smoothSpeed: 2
+>>>>>>> 85103d1882425fef415b46a2363cea4447965950
 --- !u!1 &1019256465
 GameObject:
   m_ObjectHideFlags: 0
