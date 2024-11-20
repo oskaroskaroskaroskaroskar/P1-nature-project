@@ -8,11 +8,9 @@ public class Sky : MonoBehaviour
     public float smoothSpeed = 2f; // Speed of smooth movement
     public float minYPosition = 3.98f; // Minimum Y position for the sky
     public SpriteRenderer spriteRenderer; // Reference to the SpriteRenderer
-    public List<Sprite> skySprites; // List of sprites for the sky
 
     private Vector3 initialPosition; // Initial position of the sky
     private Vector3 targetPosition; // Target position for smooth movement
-    private int lastSpriteIndex = -1; // Track the last applied sprite index
 
     void Start()
     {
@@ -22,14 +20,18 @@ public class Sky : MonoBehaviour
 
         // Subscribe to environment score changes
         GameManager.Instance.influences.CollectionChanged += OnEnvironmentScoreChanged;
+
+        // Initialize alpha
+        SetAlpha(0f); // Fully opaque at the start
     }
 
     private void OnEnvironmentScoreChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
     {
-        UpdateTargetPositionAndSprite(GameManager.Instance.environmentScore);
+        UpdateTargetPosition(GameManager.Instance.environmentScore);
+        UpdateAlpha(GameManager.Instance.environmentScore);
     }
 
-    private void UpdateTargetPositionAndSprite(float environmentScore)
+    private void UpdateTargetPosition(float environmentScore)
     {
         // Calculate the target Y position based on the score
         float newYPosition = initialPosition.y - environmentScore * distancePerScore;
@@ -39,22 +41,21 @@ public class Sky : MonoBehaviour
 
         // Set the target position for smooth movement
         targetPosition = new Vector3(transform.position.x, newYPosition, transform.position.z);
-
-        // Update the sprite based on the score
-        UpdateSprite(Mathf.Abs((int)environmentScore)); // Use the absolute value of the score
     }
 
-    private void UpdateSprite(int score)
+    private void UpdateAlpha(float environmentScore)
     {
-        // Determine the sprite index based on the score
-        int spriteIndex = Mathf.Clamp(score, 0, skySprites.Count - 1);
+        // Adjust alpha based on the negative environmentScore
+        float alpha = Mathf.Clamp01(1f + (environmentScore / 10f)); // Reduce alpha every -10 points
+        SetAlpha(alpha);
+    }
 
-        // Only update the sprite if the index has changed
-        if (spriteIndex != lastSpriteIndex)
-        {
-            spriteRenderer.sprite = skySprites[spriteIndex];
-            lastSpriteIndex = spriteIndex;
-        }
+    private void SetAlpha(float alpha)
+    {
+        // Set the alpha value of the SpriteRenderer's color
+        Color color = spriteRenderer.color;
+        color.a = alpha;
+        spriteRenderer.color = color;
     }
 
     void Update()
