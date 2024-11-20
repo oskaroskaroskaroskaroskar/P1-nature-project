@@ -65,7 +65,8 @@ public abstract class PouringItem : Item
             }
         }
     }
-    private void OnMouseUp() //method triggered when mouse release anywhere
+    
+    public void OnMouseUp() //method triggered when mouse release anywhere
     {
         if (clicked == true)
         {
