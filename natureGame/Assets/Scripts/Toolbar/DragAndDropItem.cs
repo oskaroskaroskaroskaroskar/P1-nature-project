@@ -27,7 +27,15 @@ public abstract class DragAndDropItem : Item
             var mouseWorldPosition = cam.ScreenToWorldPoint(Input.mousePosition);
             gameobject.transform.position = new Vector3(mouseWorldPosition.x, mouseWorldPosition.y, 0f);
 
-        } 
+        }
+        if (FilledUp())
+        {
+            image.color = new Color32(105, 105, 105, 255);
+        } else
+        {
+            image.color = new Color32(255, 255, 225, 255);
+        }
+
     }
 
     void OnTriggerEnter2D(Collider2D other) //method triggered when object enters any collider 
@@ -58,8 +66,18 @@ public abstract class DragAndDropItem : Item
         {
             DisableDropzones();
             clicked = false;
+            if (FilledUp())
+            {
+                image.color = new Color32(105, 105, 105, 255);
+            }
+            else
+            {
+                image.color = new Color32(255, 255, 225, 255);
+            }
             Released();
         }
+
+
     }
 
     protected virtual void Released() //method called when item is relaesed/dropped
@@ -68,6 +86,7 @@ public abstract class DragAndDropItem : Item
         {
             InstObject();
         }
+        
         ResetPosition();
     }
 
@@ -75,7 +94,7 @@ public abstract class DragAndDropItem : Item
     {
         //code to instatiate(=create) dropped object:
         GameObject obj = Instantiate(dropObject);
-        obj.transform.position = this.transform.position;
+        obj.transform.position = new Vector3(this.transform.position.x,this.transform.position.y,this.transform.position.z);
        
     }
     void EnableDropzones ()
