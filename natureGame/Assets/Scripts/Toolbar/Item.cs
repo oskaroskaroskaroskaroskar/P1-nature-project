@@ -1,3 +1,4 @@
+using Microsoft.Unity.VisualStudio.Editor;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,8 +8,15 @@ public abstract class Item : MonoBehaviour
     public Camera cam;
     public GameObject gameobject;
     public Vector3 listPosition;
+    public UnityEngine.UI.Image image;
     void Start()
     {
+        if (gameObject!=null&& gameObject.GetComponent<UnityEngine.UI.Image>() != null)
+        {
+            image = gameObject.GetComponent<UnityEngine.UI.Image>();
+            // image.color = new Color32(255, 255, 225, 100);
+        }
+
 
         listPosition = transform.localPosition;
         OnStart();
