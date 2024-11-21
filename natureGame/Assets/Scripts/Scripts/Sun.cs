@@ -8,6 +8,7 @@ public class Sun : MonoBehaviour
     public float smoothSpeed = 2f; // Speed of smoothing
     private Vector2 initialPosition; // 2D position
     private Vector2 targetPosition; // Target position
+    private float lastScore = 0.0f; // Keep track of the last environment score to detect changes
 
     void Start()
     {

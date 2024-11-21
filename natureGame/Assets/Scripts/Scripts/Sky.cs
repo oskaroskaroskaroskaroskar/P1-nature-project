@@ -10,6 +10,7 @@ public class Sky : MonoBehaviour
 
     private Vector2 initialPosition; // Starting position of the object
     private Vector2 targetPosition; // Target position to move toward
+    private float lastScore = 0.0f; // Keep track of the last environment score to detect changes
 
     void Start()
     {
@@ -24,23 +25,41 @@ public class Sky : MonoBehaviour
         }
     }
 
-    private void OnEnvironmentScoreChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
+    void Update()
+    {
+
+        if (GameManager.Instance != null)
+        {
+            float currentScore = GameManager.Instance.environmentScore;
+
+            // Update the target transparency based on the score
+            if (currentScore != lastScore)
+            {
+                OnEnvironmentScoreChanged(currentScore);
+                lastScore = currentScore;
+            }
+
+            SmoothMovement();
+        }
+    }
+
+    public void SmoothMovement()
+    {
+        // Smoothly interpolate the position of the sky object to the target position
+        Vector2 currentPosition = transform.position;
+        transform.position = Vector2.Lerp(currentPosition, targetPosition, Time.deltaTime * smoothSpeed);
+    }
+
+    private void OnEnvironmentScoreChanged(float score)
     {
         // Calculate the target Y position to move downward as the score increases
-        float targetYPosition = initialPosition.y - GameManager.Instance.environmentScore * distancePerScore;
+        float targetYPosition = initialPosition.y -score * distancePerScore;
 
         // Clamp the Y position so it does not go below the minimum
         targetYPosition = Mathf.Max(targetYPosition, minYPosition);
 
         // Set the target position
         targetPosition = new Vector2(initialPosition.x, targetYPosition);
-    }
-
-    void Update()
-    {
-        // Smoothly interpolate the position of the sky object to the target position
-        Vector2 currentPosition = transform.position;
-        transform.position = Vector2.Lerp(currentPosition, targetPosition, Time.deltaTime * smoothSpeed);
     }
 
     private void OnDestroy()
