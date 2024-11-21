@@ -18,24 +18,24 @@ public class Sky : MonoBehaviour
         initialPosition = transform.position;
         targetPosition = initialPosition;
 
-        // Subscribe to environment score changes if GameManager is available
-        if (GameManager.Instance != null)
+        // Log an error if GameManager is not initialized
+        if (GameManager.Instance == null)
         {
-            GameManager.Instance.influences.CollectionChanged += OnEnvironmentScoreChanged;
+            Debug.LogError("GameManager instance is null. Ensure it is initialized in the scene.");
         }
     }
 
     void Update()
     {
-
+        // Check for changes in environmentScore
         if (GameManager.Instance != null)
         {
             float currentScore = GameManager.Instance.environmentScore;
 
-            // Update the target transparency based on the score
+            // Update the target position based on the score
             if (currentScore != lastScore)
             {
-                OnEnvironmentScoreChanged(currentScore);
+                UpdateTargetPosition(currentScore);
                 lastScore = currentScore;
             }
 
@@ -50,24 +50,16 @@ public class Sky : MonoBehaviour
         transform.position = Vector2.Lerp(currentPosition, targetPosition, Time.deltaTime * smoothSpeed);
     }
 
-    private void OnEnvironmentScoreChanged(float score)
+    private void UpdateTargetPosition(float score)
     {
         // Calculate the target Y position to move downward as the score increases
-        float targetYPosition = initialPosition.y -score * distancePerScore;
+        float targetYPosition = initialPosition.y + score * distancePerScore;
 
         // Clamp the Y position so it does not go below the minimum
         targetYPosition = Mathf.Max(targetYPosition, minYPosition);
 
         // Set the target position
         targetPosition = new Vector2(initialPosition.x, targetYPosition);
-    }
-
-    private void OnDestroy()
-    {
-        // Unsubscribe to avoid memory leaks if the object is destroyed
-        if (GameManager.Instance != null)
-        {
-            GameManager.Instance.influences.CollectionChanged -= OnEnvironmentScoreChanged;
-        }
+        Debug.Log($"Target Y Position updated to: {targetPosition.y}");
     }
 }

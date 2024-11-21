@@ -6,39 +6,60 @@ public class Sun : MonoBehaviour
 {
     public float distancePerScore = 0.1f; // Distance to move upward per unit of environmentScore
     public float smoothSpeed = 2f; // Speed of smoothing
-    private Vector2 initialPosition; // 2D position
-    private Vector2 targetPosition; // Target position
-    private float lastScore = 0.0f; // Keep track of the last environment score to detect changes
+    public float minYPosition = 0.0f; // Minimum Y position
+
+    private Vector2 initialPosition; // Initial position of the Sun
+    private Vector2 targetPosition; // Target position of the Sun
+    private float lastScore = 0.0f; // Keep track of the last environment score
 
     void Start()
     {
-        // Store the initial position of the sun
+        // Store the initial position of the Sun object
         initialPosition = transform.position;
         targetPosition = initialPosition;
 
-        // Subscribe to environment score changes
-        GameManager.Instance.influences.CollectionChanged += OnEnvironmentScoreChanged;
-    }
-
-    private void OnEnvironmentScoreChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
-    {
-        // Update the target position based on the environment score
-        targetPosition = initialPosition + new Vector2(0, -GameManager.Instance.environmentScore * distancePerScore);
+        // Log an error if GameManager is not initialized
+        if (GameManager.Instance == null)
+        {
+            Debug.LogError("GameManager instance is null. Ensure it is initialized in the scene.");
+        }
     }
 
     void Update()
     {
-        // Smoothly interpolate the Y position of the sun
-        Vector2 currentPosition = transform.position; // Current 2D position
+        // Check for changes in environmentScore
+        if (GameManager.Instance != null)
+        {
+            float currentScore = GameManager.Instance.environmentScore;
+
+            // Update the target position based on the score
+            if (currentScore != lastScore)
+            {
+                UpdateTargetPosition(currentScore);
+                lastScore = currentScore;
+            }
+
+            SmoothMovement();
+        }
+    }
+
+    public void SmoothMovement()
+    {
+        // Smoothly interpolate the position of the Sun object to the target position
+        Vector2 currentPosition = transform.position;
         transform.position = Vector2.Lerp(currentPosition, targetPosition, Time.deltaTime * smoothSpeed);
     }
 
-    private void OnDestroy()
+    private void UpdateTargetPosition(float score)
     {
-        // Unsubscribe when this object is destroyed to avoid memory leaks
-        if (GameManager.Instance != null)
-        {
-            GameManager.Instance.influences.CollectionChanged -= OnEnvironmentScoreChanged;
-        }
+        // Calculate the target Y position to move upward as the score increases
+        float targetYPosition = initialPosition.y + score * distancePerScore;
+
+        // Clamp the Y position so it does not go below the minimum
+        targetYPosition = Mathf.Max(targetYPosition, minYPosition);
+
+        // Set the target position
+        targetPosition = new Vector2(initialPosition.x, targetYPosition);
+        Debug.Log($"Target Y Position updated to: {targetPosition.y}");
     }
 }
