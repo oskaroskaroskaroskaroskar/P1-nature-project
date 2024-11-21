@@ -15,7 +15,7 @@ public class Cow : MonoBehaviour
     float upperEdge;
     float lowerEdge;
     Vector2 targetDest;
-    float walkSpeed = 0.6f;
+    float walkSpeed = 1;
     float walkLength = 1;
     System.Random rand = new System.Random();
     // Start is called before the first frame update
@@ -56,7 +56,6 @@ public class Cow : MonoBehaviour
         {
             Walk();
         }
-        fixScale();
     }
     void Walk()
     {
@@ -112,27 +111,6 @@ public class Cow : MonoBehaviour
         }
 
         return (newPosition);
-    }
-    void fixScale()
-    {
-        int xTwist = 0;
-        if(this.transform.localScale.x>0)
-        {
-            xTwist = 1;
-        }
-        else if (this.transform.localScale.x<0)
-        {
-            xTwist = -1;
-        }
-        float yPosition = this.transform.position.y;
-        if (yPosition > 0)
-        {
-            yPosition = 0;
-        }
-        float scale = 0.4f - yPosition / 2.5f;
-        this.transform.localScale = new Vector3(xTwist*scale, scale, 1);
-        this.transform.position = new Vector3(transform.position.x, transform.position.y,10+(transform.position.y / 10));
-
     }
     public void OnDisable()
     {
