@@ -131,7 +131,7 @@ public class Cow : MonoBehaviour
         }
         float scale = 0.4f - yPosition / 2.5f;
         this.transform.localScale = new Vector3(xTwist*scale, scale, 1);
-        this.transform.position = new Vector3(transform.position.x, transform.position.y, 10f - transform.position.y / 10);
+        this.transform.position = new Vector3(transform.position.x, transform.position.y,10+(transform.position.y / 10));
 
     }
     public void OnDisable()
