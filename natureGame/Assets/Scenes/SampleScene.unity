@@ -2365,7 +2365,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ed1802be1a8f4446a125cc0bb07220c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  distancePerScore: -0.25
+  distancePerScore: -0.3
   smoothSpeed: 2
   minYPosition: 0
 --- !u!1 &1019256465
