@@ -17,8 +17,6 @@ public abstract class PouringItem : Item
         EnableDropzones();
     }
     public abstract void Pour();
-    public virtual void NotPouring() { }
-    public virtual void Dropped() { }
 
     void Update()
     {
@@ -32,7 +30,6 @@ public abstract class PouringItem : Item
             {
                 lastMousePosition = mouseWorldPosition;
                 pouringTimer = 0f;
-                NotPouring();
 
             }
             else if (inDropzones.Count > 0) // else if mouse is still, checks if mouse is also in pouring zone
@@ -44,7 +41,6 @@ public abstract class PouringItem : Item
                 else
                 {
                     pouringTimer += Time.deltaTime;
-                    NotPouring();
                 }
             }
         }
@@ -77,8 +73,6 @@ public abstract class PouringItem : Item
             DisableDropzones();
             clicked = false;
             ResetPosition();
-            NotPouring();
-            Dropped();
         }
     }
     void EnableDropzones()
