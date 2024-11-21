@@ -14,7 +14,6 @@ public abstract class Item : MonoBehaviour
         if (gameObject!=null&& gameObject.GetComponent<UnityEngine.UI.Image>() != null)
         {
             image = gameObject.GetComponent<UnityEngine.UI.Image>();
-            // image.color = new Color32(255, 255, 225, 100);
         }
 
 
