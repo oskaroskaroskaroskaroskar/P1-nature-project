@@ -371,6 +371,10 @@ PrefabInstance:
       propertyPath: dropzones.Array.data[0]
       value: 
       objectReference: {fileID: 446938429}
+    - target: {fileID: 8787017983622070802, guid: 2be6aaf3ab85a4547af6f4d529f347c7, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8945468136624167672, guid: 2be6aaf3ab85a4547af6f4d529f347c7, type: 3}
       propertyPath: m_Name
       value: CowItem
