@@ -8,6 +8,7 @@ TagManager:
   - trash
   - trashcan
   - Bee
+  - cow walkzone
   layers:
   - Default
   - TransparentFX
