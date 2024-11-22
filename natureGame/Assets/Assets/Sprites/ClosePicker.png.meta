@@ -113,10 +113,10 @@ TextureImporter:
       name: ClosePicker_0
       rect:
         serializedVersion: 2
-        x: 2145
-        y: 1774
-        width: 21
-        height: 7
+        x: 53
+        y: 284
+        width: 2638
+        height: 798
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -134,10 +134,10 @@ TextureImporter:
       name: ClosePicker_1
       rect:
         serializedVersion: 2
-        x: 41
-        y: 966
-        width: 2638
-        height: 798
+        x: 566
+        y: 267
+        width: 21
+        height: 7
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
