@@ -7,7 +7,7 @@ public class GarbageItem : DragAndDropItem
     public static int count = 0;
     public override void OnStart()
     {
-        maxCount = 20;
+        maxCount = 10;
         cam = Camera.main;
     }
     public override bool FilledUp()
