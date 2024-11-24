@@ -20,7 +20,7 @@ public abstract class PouringItem : Item
     public virtual void NotPouring() { }
     public virtual void Dropped() { }
 
-    void Update()
+    public void Update()
     {
         if (clicked == true)
         {
