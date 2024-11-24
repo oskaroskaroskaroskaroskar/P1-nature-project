@@ -7,7 +7,7 @@ public class CowItem : DragAndDropItem
     public static int count = 0;
     public override void OnStart()
     {
-        maxCount = 2;
+        maxCount = 4;
         cam = Camera.main;
     }
     public override bool FilledUp()
