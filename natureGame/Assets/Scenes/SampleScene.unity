@@ -1062,7 +1062,7 @@ MonoBehaviour:
   - {fileID: 993530660}
   inDropzones: []
   animator: {fileID: 318485537}
-  oilStain: {fileID: 1787246119}
+  oilStain: {fileID: 397281751}
 --- !u!61 &318485541
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1403,6 +1403,11 @@ PrefabInstance:
       insertIndex: 3
       addedObject: {fileID: 1736590341}
   m_SourcePrefab: {fileID: 100100000, guid: d049700da6c0dd64e847bf68fd6c48a7, type: 3}
+--- !u!1 &397281751 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5140555240215981255, guid: 10013f7ece8f39a4a815f604aad08a6f, type: 3}
+  m_PrefabInstance: {fileID: 1787246118}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &446938429
 GameObject:
   m_ObjectHideFlags: 0
@@ -3898,7 +3903,7 @@ Transform:
   m_GameObject: {fileID: 1004088250}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 226, y: 311, z: 0}
+  m_LocalPosition: {x: 226, y: 326.22, z: 0}
   m_LocalScale: {x: -50, y: 50.443348, z: 50.443348}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4920,7 +4925,7 @@ Transform:
   m_GameObject: {fileID: 1415011227}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -79, y: 315, z: 0}
+  m_LocalPosition: {x: -79, y: 326.22, z: 0}
   m_LocalScale: {x: 50.443348, y: 50.443348, z: 50.443348}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4940,7 +4945,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   distancePerScore: 0.2
   smoothSpeed: 2
-  minYPosition: 3.5
+  minYPosition: 3.4
 --- !u!212 &1415011230
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -6391,7 +6396,7 @@ Transform:
   m_GameObject: {fileID: 1856534002}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 117.028564, y: 310.72, z: 0}
+  m_LocalPosition: {x: 117.028564, y: 326.22, z: 0}
   m_LocalScale: {x: 50.443348, y: 50.443348, z: 50.443348}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -6411,7 +6416,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   distancePerScore: 0.2
   smoothSpeed: 2
-  minYPosition: 3.98
+  minYPosition: 3.95
 --- !u!1001 &1857794408
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6792,7 +6797,7 @@ Transform:
   m_GameObject: {fileID: 1958292467}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -239, y: 308, z: 0}
+  m_LocalPosition: {x: -239, y: 326.22, z: 0}
   m_LocalScale: {x: -50, y: 50.443348, z: 50.443348}
   m_ConstrainProportionsScale: 0
   m_Children: []
