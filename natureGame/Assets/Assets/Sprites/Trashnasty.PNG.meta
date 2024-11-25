@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 4d145aa745185b043ac587f0942215a7
+guid: e5cc58916e736ee41b5cf6fa09347fd2
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -34,7 +34,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 0
+    filterMode: 1
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -48,8 +48,8 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 2000
-  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 900
+  spriteBorder: {x: 709, y: 893, z: 869, w: 550}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
   alphaIsTransparency: 1
@@ -93,39 +93,26 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
-    buildTarget: Android
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Garbage_0
+      name: Trashnasty_0
       rect:
         serializedVersion: 2
-        x: 460
-        y: 459
-        width: 1550
-        height: 1200
-      alignment: 9
-      pivot: {x: 0.54417205, y: 0.5018777}
-      border: {x: 21, y: 54, z: 0, w: 30}
+        x: 726
+        y: 893
+        width: 1125
+        height: 595
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 53cd97d24b40aa4459449d967289342b
-      internalID: -162126621
+      spriteID: 868b97f981275d144bc978b502b63a32
+      internalID: 935084660
       vertices: []
       indices: 
       edges: []
@@ -133,15 +120,15 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 0b0f0d6f5654a564c9ae6da37d368c70
-    internalID: 0
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 1537655665
     vertices: []
     indices: 
     edges: []
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Garbage_0: -162126621
+      Trashnasty_0: 935084660
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

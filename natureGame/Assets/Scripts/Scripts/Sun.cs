@@ -60,6 +60,5 @@ public class Sun : MonoBehaviour
 
         // Set the target position
         targetPosition = new Vector2(initialPosition.x, targetYPosition);
-        Debug.Log($"Target Y Position updated to: {targetPosition.y}");
     }
 }
