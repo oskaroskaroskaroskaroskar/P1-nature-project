@@ -7,11 +7,11 @@ public class Picker : MonoBehaviour
     public Camera cam;
     bool hoversTrash = false;
     bool hoversCan = false;
-    GameObject pickedTrashObj;
+    //GameObject pickedTrashObj;
     bool pickedTrash = false;
     bool clicked = false;
     List<GameObject> hoverTrashList = new List<GameObject> ();
-    
+    List<Trash> pickedTrashList = new List<Trash>();
     
     public static Picker Instance; // Singleton instance
 
@@ -23,7 +23,7 @@ public class Picker : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetMouseButtonDown(0) && !clicked)
+       /* if (Input.GetMouseButtonDown(0) && !clicked)
         {
             clicked = true;
             foreach (GameObject trash in hoverTrashList)
@@ -32,42 +32,58 @@ public class Picker : MonoBehaviour
                 pickedTrash = true; 
             }
 
-        } 
-        else if (Input.GetMouseButtonUp(0))
+        } */
+        if (Input.GetMouseButtonUp(0))
         {
             if(pickedTrash)
             {
-                Trash trash = pickedTrashObj.GetComponent<Trash>();
-
-                 // Ensure the Trash component exists before calling Dropped()
-                if (trash != null)
+                foreach (Trash trash in pickedTrashList)
                 {
-                    if (hoversCan)
-                    {
-                        GameManager.Instance.IncrementDestroyedCount();
+                    pickedTrashList.Remove(trash);
 
-                        Destroy(trash.gameObject);
-                        
-                    }
-                    else
+                    //Trash trash = pickedTrashObj.GetComponent<Trash>();
+
+                    // Ensure the Trash component exists before calling Dropped()
+                    if (trash != null)
                     {
-                        Instance = this;
-                        trash.Dropped();
+                        if (hoversCan)
+                        {
+                            GameManager.Instance.IncrementDestroyedCount();
+
+                            Destroy(trash.gameObject);
+
+                        }
+                        else
+                        {
+                            Instance = this;
+                            trash.Dropped();
+                        }
                     }
                 }
+               
             }
             clicked = false;
             pickedTrash = false;
-            pickedTrashObj = null; // reset the picked GameObject
+           //pickedTrashObj = null; // reset the picked GameObject
         }
 
         if (pickedTrash)
         {
-            var mouseWorldPosition = cam.ScreenToWorldPoint(Input.mousePosition);
-            pickedTrashObj.transform.position = new Vector3(mouseWorldPosition.x, mouseWorldPosition.y, 0f);
+            foreach (Trash trash in pickedTrashList)
+            {
+                var mouseWorldPosition = cam.ScreenToWorldPoint(Input.mousePosition);
+                trash.transform.position = new Vector3(mouseWorldPosition.x, mouseWorldPosition.y, 0f);
+
+            }
         }
     }
-    void OnTriggerEnter2D(Collider2D other)
+    public void TrashPicked(Trash trash)
+    {
+        Debug.Log("trash is picked");
+        pickedTrash = true;
+        pickedTrashList.Add(trash);
+    }
+    /*void OnTriggerEnter2D(Collider2D other)
     {
         if (other.tag == "trash")
         {
@@ -90,4 +106,5 @@ public class Picker : MonoBehaviour
             hoversCan = false;
         }
     }
+    */
 }

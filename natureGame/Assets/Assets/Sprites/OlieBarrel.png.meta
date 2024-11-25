@@ -113,12 +113,12 @@ TextureImporter:
       name: OlieBarrel_0
       rect:
         serializedVersion: 2
-        x: 898
-        y: 211
-        width: 823
-        height: 1131
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 899
+        y: 217
+        width: 822
+        height: 1145
+      alignment: 9
+      pivot: {x: 0.5304396, y: 0.46666574}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
