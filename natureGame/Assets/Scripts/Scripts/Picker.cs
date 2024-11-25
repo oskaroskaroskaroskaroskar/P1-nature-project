@@ -37,9 +37,10 @@ public class Picker : MonoBehaviour
         {
             if(pickedTrash)
             {
+                List<Trash> removeList = new List<Trash>();
                 foreach (Trash trash in pickedTrashList)
                 {
-                    pickedTrashList.Remove(trash);
+                    removeList.Add(trash);
 
                     //Trash trash = pickedTrashObj.GetComponent<Trash>();
 
@@ -60,7 +61,12 @@ public class Picker : MonoBehaviour
                         }
                     }
                 }
-               
+                foreach (Trash trash in removeList)
+                {
+
+                    pickedTrashList.Remove(trash);
+                }
+
             }
             clicked = false;
             pickedTrash = false;
@@ -83,28 +89,28 @@ public class Picker : MonoBehaviour
         pickedTrash = true;
         pickedTrashList.Add(trash);
     }
-    /*void OnTriggerEnter2D(Collider2D other)
+    void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.tag == "trash")
+        /*if (other.tag == "trash")
         {
             hoverTrashList.Add(other.gameObject);
-        } 
-        else if (other.tag == "trashcan")
+        } */
+         if (other.tag == "trashcan")
         {
             hoversCan = true;
         }
     }
     void OnTriggerExit2D(Collider2D other)
     {
-        if (other.tag == "trash")
+        /*if (other.tag == "trash")
         {
             hoverTrashList.Remove(other.gameObject);
 
-        } 
-        else if (other.tag == "trashcan")
+        } */
+        if (other.tag == "trashcan")
         {
             hoversCan = false;
         }
     }
-    */
+    
 }

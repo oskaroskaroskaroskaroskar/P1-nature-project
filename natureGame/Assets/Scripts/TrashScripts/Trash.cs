@@ -3,10 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UIElements;
-using UnityEngine.EventSystems;
 
-
-public abstract class Trash : MonoBehaviour, IPointerClickHandler
+public abstract class Trash : MonoBehaviour
 {
     
     public Vector3 position;
@@ -33,16 +31,17 @@ public abstract class Trash : MonoBehaviour, IPointerClickHandler
     {
         fixScale();
     }
-    public void OnPointerClick(PointerEventData eventData)
+    public void OnMouseDown()
     {
 
-        Debug.Log("ttt");
+
         if (MouseStuckItem.mouseStuckActive)
         {
             GameObject.Find("PickerOpen(Clone)").GetComponent<Picker>().TrashPicked(this);
         }
     }
-    void fixScale()
+
+        void fixScale()
     {
         float yPosition = this.transform.position.y;
         if (yPosition > 0)
@@ -71,4 +70,5 @@ public abstract class Trash : MonoBehaviour, IPointerClickHandler
             GameManager.Instance.IncrementDestroyedCount();
         }
     }
+
 }
