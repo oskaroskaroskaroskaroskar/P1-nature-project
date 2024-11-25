@@ -23,7 +23,7 @@ public class Picker : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetMouseButtonDown(0) && !clicked)
+        if ((/*Input.GetMouseButtonDown(0) ||*/ Input.touchCount > 0) && !clicked)
         {
             clicked = true;
             foreach (GameObject trash in hoverTrashList)
