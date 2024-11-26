@@ -33,12 +33,15 @@ public abstract class Trash : MonoBehaviour
     }
     public void OnMouseDown()
     {
-
-
         if (MouseStuckItem.mouseStuckActive)
         {
+            Debug.Log("trahs");
             GameObject.Find("PickerOpen(Clone)").GetComponent<Picker>().TrashPicked(this);
         }
+    }
+    public void CheckOtherTrash()
+    {
+
     }
 
         void fixScale()
