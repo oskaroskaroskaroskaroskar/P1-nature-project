@@ -85,7 +85,6 @@ public class Picker : MonoBehaviour
     }
     public void TrashPicked(Trash trash)
     {
-        Debug.Log("trash is picked");
         pickedTrash = true;
         pickedTrashList.Add(trash);
     }

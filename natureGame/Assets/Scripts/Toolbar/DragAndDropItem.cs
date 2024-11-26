@@ -95,7 +95,7 @@ public abstract class DragAndDropItem : Item
         //code to instatiate(=create) dropped object:
         GameObject obj = Instantiate(dropObject);
        
-        obj.transform.position = new Vector3(this.transform.position.x,this.transform.position.y,10);
+        obj.transform.position = new Vector3(this.transform.position.x,this.transform.position.y,9);
        
     }
     void EnableDropzones ()
