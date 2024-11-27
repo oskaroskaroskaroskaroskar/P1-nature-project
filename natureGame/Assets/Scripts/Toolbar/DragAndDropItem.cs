@@ -25,7 +25,7 @@ public abstract class DragAndDropItem : Item
         {
             //code to make object follow mouse:
             var mouseWorldPosition = cam.ScreenToWorldPoint(Input.mousePosition);
-            gameobject.transform.position = new Vector3(mouseWorldPosition.x, mouseWorldPosition.y, 0f);
+            gameobject.transform.position = new Vector3(mouseWorldPosition.x, mouseWorldPosition.y+GameManager.touchYOffset, 0f);
 
         }
         if (FilledUp())
@@ -95,7 +95,7 @@ public abstract class DragAndDropItem : Item
         //code to instatiate(=create) dropped object:
         GameObject obj = Instantiate(dropObject);
        
-        obj.transform.position = new Vector3(this.transform.position.x,this.transform.position.y,9);
+        obj.transform.position = new Vector3(this.transform.position.x,this.transform.position.y,0);
        
     }
     void EnableDropzones ()

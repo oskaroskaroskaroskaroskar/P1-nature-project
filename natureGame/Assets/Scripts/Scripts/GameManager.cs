@@ -13,7 +13,7 @@ public class GameManager : MonoBehaviour
     
     public static GameManager Instance; // Singleton instance
     private int destroyedCount = 0; // Counter for destroyed objects
-
+    public static float touchYOffset = 0.4f;
 
     public GameManager() : base() {
         this.influences = new ObservableCollection<EnvironmentInfluence>();

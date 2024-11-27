@@ -26,7 +26,7 @@ public abstract class PouringItem : Item
         {
             // Code to make object follow mouse
             var mouseWorldPosition = cam.ScreenToWorldPoint(Input.mousePosition);
-            gameObject.transform.position = new Vector3(mouseWorldPosition.x, mouseWorldPosition.y, 0f);
+            gameObject.transform.position = new Vector3(mouseWorldPosition.x, mouseWorldPosition.y + GameManager.touchYOffset, 0f);
 
             // Check if the oilcan is in any pouring zone
             if (inDropzones.Count > 0)
