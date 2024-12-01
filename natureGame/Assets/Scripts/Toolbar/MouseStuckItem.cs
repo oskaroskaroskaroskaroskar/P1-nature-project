@@ -12,10 +12,11 @@ public abstract class MouseStuckItem : Item
     public GameObject trashPickerPrefab; // Optional if instantiating
     public GameObject trashPicker; // Assign the triangle prefab here or instantiate it from prefab
     public GameObject highlight;
+    Color32 highLightColor;
     
     public override void OnStart()
     {
-
+        highLightColor = highlight.GetComponent<SpriteRenderer>().color;
         // Ensure the trashPicker is initialized correctly
         if (trashPicker == null && trashPickerPrefab != null)
         {
@@ -45,6 +46,14 @@ public abstract class MouseStuckItem : Item
             // Debug.Log("Reset Position Triggered");
             ResetItem();
         }
+        if (mouseOver&&clickedDown&&!isClicked)
+        {
+            highlight.GetComponent<SpriteRenderer>().color = new Color32(255, 255, 255,160);
+        } else if (!isClicked)
+        {
+
+            highlight.GetComponent<SpriteRenderer>().color = highLightColor;
+        }
     }
 
     public override void OnClick()
@@ -53,28 +62,30 @@ public abstract class MouseStuckItem : Item
     }
     public void OnMouseUp()
     {
-        if (clickedDown)
+        if (clickedDown && mouseOver)
         {
-            clickedDown = false;
+            
             Clicked();
         }
+        clickedDown = false;
     }
     public void Clicked()
     {
-        isClicked = !isClicked;
-        // Debug.Log("ToggleClick called. isClicked is now: " + isClicked);
 
-        if (isClicked)
+        isClicked = !isClicked;
+
+        if (isClicked) // If picker is active
         {
-            highlight.GetComponent<Renderer>().enabled = true;
+            //highlight.GetComponent<Renderer>().enabled = true;
+            highlight.GetComponent<SpriteRenderer>().color = new Color32( 255, 255, 255, 255);
             trashPicker.SetActive(true);
             mouseStuckActive = true;
-            trashPicker.transform.position = transform.position;
-            // Debug.Log("Trash Picker activated and positioned.");
+            trashPicker.transform.position = new Vector3(0,0,9.7f);
         }
         else
         {
-            highlight.GetComponent<Renderer>().enabled = false;
+            //highlight.GetComponent<Renderer>().enabled = false;
+            highlight.GetComponent<SpriteRenderer>().color = highLightColor;
             ResetItem();
         }
     }
