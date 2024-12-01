@@ -23,16 +23,6 @@ public class Picker : MonoBehaviour
 
     void Update()
     {
-       /* if (Input.GetMouseButtonDown(0) && !clicked)
-        {
-            clicked = true;
-            foreach (GameObject trash in hoverTrashList)
-            {
-                pickedTrashObj = trash;
-                pickedTrash = true; 
-            }
-
-        } */
         if (Input.GetMouseButtonUp(0))
         {
             if(pickedTrash)
@@ -42,9 +32,6 @@ public class Picker : MonoBehaviour
                 {
                     removeList.Add(trash);
 
-                    //Trash trash = pickedTrashObj.GetComponent<Trash>();
-
-                    // Ensure the Trash component exists before calling Dropped()
                     if (trash != null)
                     {
                         if (hoversCan)
@@ -70,7 +57,6 @@ public class Picker : MonoBehaviour
             }
             clicked = false;
             pickedTrash = false;
-           //pickedTrashObj = null; // reset the picked GameObject
         }
 
         if (pickedTrash)
@@ -90,10 +76,6 @@ public class Picker : MonoBehaviour
     }
     void OnTriggerEnter2D(Collider2D other)
     {
-        /*if (other.tag == "trash")
-        {
-            hoverTrashList.Add(other.gameObject);
-        } */
          if (other.tag == "trashcan")
         {
             hoversCan = true;
@@ -101,15 +83,28 @@ public class Picker : MonoBehaviour
     }
     void OnTriggerExit2D(Collider2D other)
     {
-        /*if (other.tag == "trash")
-        {
-            hoverTrashList.Remove(other.gameObject);
-
-        } */
         if (other.tag == "trashcan")
         {
             hoversCan = false;
         }
     }
-    
+    private void OnMouseUp()
+    {
+        if (pickedTrash)
+        {
+            List<Trash> dropList = new List<Trash>();
+            foreach (Trash trash in pickedTrashList)
+            {
+                trash.Dropped();
+            }
+
+
+            foreach (Trash trash in dropList)
+            {
+                pickedTrashList.Remove(trash);
+            }
+            pickedTrash = false;
+        }
+    }       
+
 }
