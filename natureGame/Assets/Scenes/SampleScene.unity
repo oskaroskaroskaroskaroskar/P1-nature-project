@@ -335,7 +335,6 @@ MonoBehaviour:
   - {fileID: 9203190347299535269, guid: 454622d56e79c8c44a7abf4cbc821aa3, type: 3}
   - {fileID: 1251427354390872238, guid: 10d80db5f6abc594d90341a3c22ba648, type: 3}
   - {fileID: 3110230608801734160, guid: 443ba9c1fb9dabc44aa7a9d0f4460a3a, type: 3}
-  flowerMax: 0
   dropOffset: 0
 --- !u!114 &31193187
 MonoBehaviour:
@@ -5859,6 +5858,7 @@ GameObject:
   - component: {fileID: 1521767327}
   - component: {fileID: 1521767329}
   - component: {fileID: 1521767328}
+  - component: {fileID: 1521767330}
   m_Layer: 5
   m_Name: Background
   m_TagString: Untagged
@@ -5923,6 +5923,22 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1521767326}
   m_CullTransparentMesh: 1
+--- !u!114 &1521767330
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1521767326}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 083131115e9ddc44a84ea68503a14c20, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  backgroundSprites:
+  - {fileID: 21300000, guid: c85309f48eb86e642b13e304fbcd1cff, type: 3}
+  - {fileID: -995432774, guid: 811b1b15de3716241b823ac9de734b15, type: 3}
+  backgroundImage: {fileID: 1521767328}
 --- !u!1 &1544397098
 GameObject:
   m_ObjectHideFlags: 0
