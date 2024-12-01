@@ -48,7 +48,7 @@ public abstract class MouseStuckItem : Item
         }
         if (mouseOver&&clickedDown&&!isClicked)
         {
-            highlight.GetComponent<SpriteRenderer>().color = new Color32(255, 255, 255,160);
+            highlight.GetComponent<SpriteRenderer>().color = new Color32(255, 255, 255,140);
         } else if (!isClicked)
         {
 
