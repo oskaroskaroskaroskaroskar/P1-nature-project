@@ -9,6 +9,7 @@ TagManager:
   - trashcan
   - Bee
   - cow walkzone
+  - WaterStain
   layers:
   - Default
   - TransparentFX
