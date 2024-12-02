@@ -13,9 +13,12 @@ public abstract class MouseStuckItem : Item
     public GameObject trashPicker; // Assign the triangle prefab here or instantiate it from prefab
     public GameObject highlight;
     Color32 highLightColor;
-    
+
+    float upperYCord;
     public override void OnStart()
     {
+        upperYCord = gameobject.transform.position.y+0.3f;
+
         highLightColor = highlight.GetComponent<SpriteRenderer>().color;
         // Ensure the trashPicker is initialized correctly
         if (trashPicker == null && trashPickerPrefab != null)
@@ -25,13 +28,15 @@ public abstract class MouseStuckItem : Item
         }
 
         trashPicker.SetActive(false); // Ensure trashPicker is hidden initially
+        
     }
 
     private void Update()
     {
-        if (isClicked && trashPicker != null)
+        Vector3 mousePos = GetMouseWorldPosition();
+        if (isClicked && trashPicker != null && mousePos.y > upperYCord )
         {
-            Vector3 mousePos = GetMouseWorldPosition();
+            
             trashPicker.transform.position = mousePos;
 
             SpriteRenderer sr = trashPicker.GetComponent<SpriteRenderer>();
