@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class SoundManager : MonoBehaviour
 {
+    public AudioSource ambientBirds;
     public AudioSource musicGood;
     public AudioSource musicBad;
+    private bool isBirdsPlaying = true;
     private bool isMusicGoodPlaying = false;
     private bool isMusicBadPlaying = false;
 
@@ -30,6 +32,12 @@ public class SoundManager : MonoBehaviour
 
             if (currentScore < -3)
             {
+                //make birds stop singing
+                if(isBirdsPlaying) 
+                {
+                    ambientBirds.Pause();
+                    isBirdsPlaying = false;
+                }
                 // Play bad music if it's not already playing
                 if (!isMusicBadPlaying)
                 {
@@ -46,6 +54,12 @@ public class SoundManager : MonoBehaviour
             }
             else if (currentScore >= -2)
             {
+                //make birds start singing
+                if (!isBirdsPlaying)
+                {
+                    ambientBirds.Play();
+                    isBirdsPlaying = true;
+                }
                 // Play good music if it's not already playing
                 if (!isMusicGoodPlaying)
                 {
