@@ -63,17 +63,9 @@ public abstract class MouseStuckItem : Item
 
     public override void OnClick()
     {
-        clickedDown = true;
+        Clicked();
     }
-    public void OnMouseUp()
-    {
-        if (clickedDown && mouseOver)
-        {
-            
-            Clicked();
-        }
-        clickedDown = false;
-    }
+   
     public void Clicked()
     {
 

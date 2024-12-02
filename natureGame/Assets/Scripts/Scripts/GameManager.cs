@@ -12,7 +12,7 @@ public class GameManager : MonoBehaviour
     
     public static GameManager Instance; // Singleton instance
     private int destroyedCount = 0; // Counter for destroyed objects
-    public static float touchYOffset = 0.4f;
+    public static float touchYOffset = 0.7f;
 
     public GameObject trashItem;
     public GameManager() : base() {
@@ -80,7 +80,6 @@ public class GameManager : MonoBehaviour
     public void IncrementDestroyedCount()
     {
         destroyedCount++;
-        Debug.Log("Destroyed count: " + destroyedCount);
 
         // Here you can trigger events, such as updating a trash can image
         if (destroyedCount % 1 == 0)

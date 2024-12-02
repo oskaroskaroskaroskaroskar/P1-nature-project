@@ -43,7 +43,7 @@ public class SvampItem : PouringItem
     }
     public override void Dropped()
     {
-        gameobject.GetComponent<SpriteRenderer>().color = new Color32(255, 255, 255, 255);
+        
         darkness = 0;
     }
 }

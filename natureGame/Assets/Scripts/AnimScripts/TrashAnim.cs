@@ -40,6 +40,5 @@ public class TrashAnim : MonoBehaviour
 
         // Update the trash can sprite
         trashCanImage.sprite = trashCanSprites[spriteIndex];
-        Debug.Log($"Trash can image updated. Sprite index: {spriteIndex}");
     }
 }

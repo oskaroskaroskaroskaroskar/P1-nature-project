@@ -24,13 +24,12 @@ public abstract class Item : MonoBehaviour
     public abstract void OnClick();
     void OnMouseDown ()
     {
-        if (MouseStuckItem.mouseStuckActive == false)
-        {
-            OnClick();
-        } else// if (this.GetType().BaseType.Name!="MouseStuckItem")
+        if (MouseStuckItem.mouseStuckActive == true && this.GetType().BaseType.Name != "MouseStuckItem")
         {
             FindObjectOfType<MouseStuckItem>().Clicked();
+          
         }
+        OnClick();
     }
     private void OnMouseEnter()
     {
