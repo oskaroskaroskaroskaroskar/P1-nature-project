@@ -47,7 +47,6 @@ public abstract class Trash : MonoBehaviour
     }
     public void CheckOtherTrash()
     {
-        Debug.Log("checking other trash");
         foreach (Trash t in trashList)
         {
             if (t!=this)

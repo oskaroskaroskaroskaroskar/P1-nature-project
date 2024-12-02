@@ -11,6 +11,16 @@ public abstract class PouringItem : Item
     float pouringTimer = 0f; //used to make delay for pouring
     public List<GameObject> inDropzones = new List<GameObject>();
 
+    bool fullOpacity = true;
+    SpriteRenderer spriteRend;
+    UnityEngine.UI.Image Image;
+
+    void Awake()
+    {
+        spriteRend = gameObject.GetComponent<SpriteRenderer>();
+        Image = gameObject.GetComponent<UnityEngine.UI.Image>();
+    }
+
     public override void OnClick() //method triggered when gameobject is clicked
     {
         clicked = true;
@@ -18,6 +28,19 @@ public abstract class PouringItem : Item
     }
     public abstract void Pour();
     public virtual void NotPouring() { }
+    void OnDrop()
+    {
+        fullOpacity = true;
+        if (spriteRend != null)
+        {
+            gameObject.GetComponent<SpriteRenderer>().color = new Color32(255, 255, 255, 255);
+        }
+        else if (image != null)
+        {
+            image.color = new Color32(255, 255, 255, 255); 
+        }
+        Dropped();
+    }
     public virtual void Dropped() { }
 
     public void Update()
@@ -32,10 +55,34 @@ public abstract class PouringItem : Item
             if (inDropzones.Count > 0)
             {
                 Pour(); // Continuously pour when in the pouring zone
+                if (!fullOpacity)
+                {
+                    fullOpacity = true;
+                    if (spriteRend != null)
+                    {
+                        gameObject.GetComponent<SpriteRenderer>().color += new Color32(0, 0, 0, 80);
+                    } 
+                    else if (image != null)
+                    {
+                        image.color += new Color32(0, 0, 0, 80); 
+                    }
+                }
             }
             else
             {
                 NotPouring(); // Stop pouring if not in the pouring zone
+                if (fullOpacity)
+                {
+                    fullOpacity = false;
+                    if (spriteRend != null)
+                    {
+                        gameObject.GetComponent<SpriteRenderer>().color -= new Color32(0, 0, 0, 80);
+                    }
+                    else if (image != null)
+                    {
+                        image.color -= new Color32(0, 0, 0, 80); 
+                    }
+                }
             }
         }
     }
@@ -69,7 +116,7 @@ public abstract class PouringItem : Item
             clicked = false;
             ResetPosition();
             NotPouring();
-            Dropped();
+            OnDrop();
         }
     }
     void EnableDropzones()
@@ -78,11 +125,6 @@ public abstract class PouringItem : Item
         {
             Dropzone dropzone = DZ.GetComponent<Dropzone>();
 
-            // Ensure the Trash component exists before calling Dropped()
-            if (dropzone != null)
-            {
-                dropzone.Activate();
-            }
         }
     }
     void DisableDropzones()
@@ -91,11 +133,6 @@ public abstract class PouringItem : Item
         {
             Dropzone dropzone = DZ.GetComponent<Dropzone>();
 
-            // Ensure the Trash component exists before calling Dropped()
-            if (dropzone != null)
-            {
-                dropzone.DeActivate();
-            }
         }
     }
 
