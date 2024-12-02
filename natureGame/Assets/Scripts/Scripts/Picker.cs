@@ -7,11 +7,11 @@ public class Picker : MonoBehaviour
     public Camera cam;
     bool hoversTrash = false;
     bool hoversCan = false;
-    GameObject pickedTrashObj;
+    //GameObject pickedTrashObj;
     bool pickedTrash = false;
     bool clicked = false;
     List<GameObject> hoverTrashList = new List<GameObject> ();
-    
+    List<Trash> pickedTrashList = new List<Trash>();
     
     public static Picker Instance; // Singleton instance
 
@@ -23,71 +23,88 @@ public class Picker : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetMouseButtonDown(0) && !clicked)
-        {
-            clicked = true;
-            foreach (GameObject trash in hoverTrashList)
-            {
-                pickedTrashObj = trash;
-                pickedTrash = true; 
-            }
-
-        } 
-        else if (Input.GetMouseButtonUp(0))
+        if (Input.GetMouseButtonUp(0))
         {
             if(pickedTrash)
             {
-                Trash trash = pickedTrashObj.GetComponent<Trash>();
-
-                 // Ensure the Trash component exists before calling Dropped()
-                if (trash != null)
+                List<Trash> removeList = new List<Trash>();
+                foreach (Trash trash in pickedTrashList)
                 {
-                    if (hoversCan)
-                    {
-                        GameManager.Instance.IncrementDestroyedCount();
+                    removeList.Add(trash);
 
-                        Destroy(trash.gameObject);
-                        
-                    }
-                    else
+                    if (trash != null)
                     {
-                        Instance = this;
-                        trash.Dropped();
+                        if (hoversCan)
+                        {
+                            GameManager.Instance.IncrementDestroyedCount();
+
+                            Destroy(trash.gameObject);
+
+                        }
+                        else
+                        {
+                            Instance = this;
+                            trash.Dropped();
+                        }
                     }
                 }
+                foreach (Trash trash in removeList)
+                {
+
+                    pickedTrashList.Remove(trash);
+                }
+
             }
             clicked = false;
             pickedTrash = false;
-            pickedTrashObj = null; // reset the picked GameObject
         }
 
         if (pickedTrash)
         {
-            var mouseWorldPosition = cam.ScreenToWorldPoint(Input.mousePosition);
-            pickedTrashObj.transform.position = new Vector3(mouseWorldPosition.x, mouseWorldPosition.y, 0f);
+            foreach (Trash trash in pickedTrashList)
+            {
+                var mouseWorldPosition = cam.ScreenToWorldPoint(Input.mousePosition);
+                trash.transform.position = new Vector3(mouseWorldPosition.x, mouseWorldPosition.y, 0f);
+
+            }
         }
+    }
+    public void TrashPicked(Trash trash)
+    {
+        pickedTrash = true;
+        pickedTrashList.Add(trash);
     }
     void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.tag == "trash")
-        {
-            hoverTrashList.Add(other.gameObject);
-        } 
-        else if (other.tag == "trashcan")
+         if (other.tag == "trashcan")
         {
             hoversCan = true;
         }
     }
     void OnTriggerExit2D(Collider2D other)
     {
-        if (other.tag == "trash")
-        {
-            hoverTrashList.Remove(other.gameObject);
-
-        } 
-        else if (other.tag == "trashcan")
+        if (other.tag == "trashcan")
         {
             hoversCan = false;
         }
     }
+    private void OnMouseUp()
+    {
+        if (pickedTrash)
+        {
+            List<Trash> dropList = new List<Trash>();
+            foreach (Trash trash in pickedTrashList)
+            {
+                trash.Dropped();
+            }
+
+
+            foreach (Trash trash in dropList)
+            {
+                pickedTrashList.Remove(trash);
+            }
+            pickedTrash = false;
+        }
+    }       
+
 }

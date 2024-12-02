@@ -17,34 +17,29 @@ public abstract class PouringItem : Item
         EnableDropzones();
     }
     public abstract void Pour();
+    public virtual void NotPouring() { }
+    public virtual void Dropped() { }
 
-    void Update()
+    public void Update()
     {
         if (clicked == true)
         {
-            //code to make object follow mouse:
+            // Code to make object follow mouse
             var mouseWorldPosition = cam.ScreenToWorldPoint(Input.mousePosition);
-            gameobject.transform.position = new Vector3(mouseWorldPosition.x, mouseWorldPosition.y, 0f);
+            gameObject.transform.position = new Vector3(mouseWorldPosition.x, mouseWorldPosition.y + GameManager.touchYOffset, 0f);
 
-            if (lastMousePosition != mouseWorldPosition) // checks if mouse is moving
+            // Check if the oilcan is in any pouring zone
+            if (inDropzones.Count > 0)
             {
-                lastMousePosition = mouseWorldPosition;
-                pouringTimer = 0f;
-
+                Pour(); // Continuously pour when in the pouring zone
             }
-            else if (inDropzones.Count > 0) // else if mouse is still, checks if mouse is also in pouring zone
+            else
             {
-                if (pouringTimer > 0.2) //amount of seconds before pouring starts when holding still
-                {
-                    Pour();
-                }
-                else
-                {
-                    pouringTimer += Time.deltaTime;
-                }
+                NotPouring(); // Stop pouring if not in the pouring zone
             }
         }
     }
+
     void OnTriggerEnter2D(Collider2D other) //method triggered when object enters any collider 
     {
         foreach (GameObject pouringZone in pouringZones) //runs through list of pouring zones
@@ -73,6 +68,8 @@ public abstract class PouringItem : Item
             DisableDropzones();
             clicked = false;
             ResetPosition();
+            NotPouring();
+            Dropped();
         }
     }
     void EnableDropzones()

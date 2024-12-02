@@ -86,4 +86,8 @@ public class OiilItem : PouringItem
         base.OnMouseUp(); // Ensures the existing stop logic from PouringItem is executed
         StopDripping(); // Stop the dripping coroutine when the mouse is released
     }
+    public override void NotPouring()
+    {
+        StopDripping();
+    }
 }

@@ -4,71 +4,61 @@ using UnityEngine;
 
 public class Sky : MonoBehaviour
 {
-    public float distancePerScore = 0.5f; // Distance to move downward per unit of environmentScore
-    public float smoothSpeed = 2f; // Speed of smooth movement
-    public float minYPosition = 3.98f; // Minimum Y position for the sky
-    public SpriteRenderer spriteRenderer; // Reference to the SpriteRenderer
-    public List<Sprite> skySprites; // List of sprites for the sky
+    public float distancePerScore = 0.1f; // Distance to move downward per unit of environmentScore
+    public float smoothSpeed = 2f; // Speed of smoothing
+    public float minYPosition = 3.98f; // Minimum Y position for the sky object
 
-    private Vector3 initialPosition; // Initial position of the sky
-    private Vector3 targetPosition; // Target position for smooth movement
-    private int lastSpriteIndex = -1; // Track the last applied sprite index
+    private Vector2 initialPosition; // Starting position of the object
+    private Vector2 targetPosition; // Target position to move toward
+    private float lastScore = 0.0f; // Keep track of the last environment score to detect changes
 
     void Start()
     {
-        // Store the initial position of the sky
+        // Store the initial position of the sky object
         initialPosition = transform.position;
         targetPosition = initialPosition;
 
-        // Subscribe to environment score changes
-        GameManager.Instance.influences.CollectionChanged += OnEnvironmentScoreChanged;
-    }
-
-    private void OnEnvironmentScoreChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
-    {
-        UpdateTargetPositionAndSprite(GameManager.Instance.environmentScore);
-    }
-
-    private void UpdateTargetPositionAndSprite(float environmentScore)
-    {
-        // Calculate the target Y position based on the score
-        float newYPosition = initialPosition.y - environmentScore * distancePerScore;
-
-        // Clamp the Y position to stop at the minimum value
-        newYPosition = Mathf.Max(newYPosition, minYPosition);
-
-        // Set the target position for smooth movement
-        targetPosition = new Vector3(transform.position.x, newYPosition, transform.position.z);
-
-        // Update the sprite based on the score
-        UpdateSprite(Mathf.Abs((int)environmentScore)); // Use the absolute value of the score
-    }
-
-    private void UpdateSprite(int score)
-    {
-        // Determine the sprite index based on the score
-        int spriteIndex = Mathf.Clamp(score, 0, skySprites.Count - 1);
-
-        // Only update the sprite if the index has changed
-        if (spriteIndex != lastSpriteIndex)
+        // Log an error if GameManager is not initialized
+        if (GameManager.Instance == null)
         {
-            spriteRenderer.sprite = skySprites[spriteIndex];
-            lastSpriteIndex = spriteIndex;
+            Debug.LogError("GameManager instance is null. Ensure it is initialized in the scene.");
         }
     }
 
     void Update()
     {
-        // Smoothly interpolate the Y position of the sky toward the target position
-        transform.position = Vector3.Lerp(transform.position, targetPosition, Time.deltaTime * smoothSpeed);
-    }
-
-    private void OnDestroy()
-    {
-        // Unsubscribe when this object is destroyed to avoid memory leaks
+        // Check for changes in environmentScore
         if (GameManager.Instance != null)
         {
-            GameManager.Instance.influences.CollectionChanged -= OnEnvironmentScoreChanged;
+            float currentScore = GameManager.Instance.environmentScore;
+
+            // Update the target position based on the score
+            if (currentScore != lastScore)
+            {
+                UpdateTargetPosition(currentScore);
+                lastScore = currentScore;
+            }
+
+            SmoothMovement();
         }
+    }
+
+    public void SmoothMovement()
+    {
+        // Smoothly interpolate the position of the sky object to the target position
+        Vector2 currentPosition = transform.position;
+        transform.position = Vector2.Lerp(currentPosition, targetPosition, Time.deltaTime * smoothSpeed);
+    }
+
+    private void UpdateTargetPosition(float score)
+    {
+        // Calculate the target Y position to move downward as the score increases
+        float targetYPosition = initialPosition.y + score * distancePerScore;
+
+        // Clamp the Y position so it does not go below the minimum
+        targetYPosition = Mathf.Max(targetYPosition, minYPosition);
+
+        // Set the target position
+        targetPosition = new Vector2(initialPosition.x, targetYPosition);
     }
 }
