@@ -7,6 +7,7 @@ public class FlowerItem : PouringItem
     public List<GameObject> flowers = new List<GameObject>();
     public static int flowerCount = 0;
     public static int flowerMax;
+    bool colorMuted = false;
 
     public float dropOffset;
     private float pourSpeed;
@@ -23,6 +24,22 @@ public class FlowerItem : PouringItem
         dropOffset = -1.7f;
         pourSpeed = 3f;
         cam = Camera.main;
+    }
+    void Update ()
+    {
+        base.Update();
+
+        if (flowerCount >= flowerMax && !colorMuted)
+        {
+            colorMuted = true;
+            image.color -= new Color32(150, 150, 150, 0);
+        }
+        else if (flowerCount < flowerMax && colorMuted)
+        {
+            colorMuted = false;
+            image.color += new Color32(150, 150, 150, 0);
+        }
+       
     }
 
     public override void Pour()
@@ -98,5 +115,9 @@ public class FlowerItem : PouringItem
     public override void NotPouring()
     {
         StopDripping();
+    }
+    public override void Dropped()
+    {
+        colorMuted = false;
     }
 }

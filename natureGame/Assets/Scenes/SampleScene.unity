@@ -328,9 +328,13 @@ MonoBehaviour:
   listPosition: {x: 0, y: 0, z: 0}
   image: {fileID: 0}
   mouseOver: 0
+  clicked: 0
   pouringZones:
   - {fileID: 774359940}
   inDropzones: []
+  fullOpacity: 1
+  spriteRend: {fileID: 0}
+  Image: {fileID: 0}
   flowers:
   - {fileID: 9203190347299535269, guid: 454622d56e79c8c44a7abf4cbc821aa3, type: 3}
   - {fileID: 1251427354390872238, guid: 10d80db5f6abc594d90341a3c22ba648, type: 3}
@@ -1235,9 +1239,13 @@ MonoBehaviour:
   listPosition: {x: 0, y: 0, z: 0}
   image: {fileID: 0}
   mouseOver: 0
+  clicked: 0
   pouringZones:
   - {fileID: 993530660}
   inDropzones: []
+  fullOpacity: 1
+  spriteRend: {fileID: 0}
+  Image: {fileID: 0}
   animator: {fileID: 318485537}
   oilStain: {fileID: 1787246119}
 --- !u!61 &318485541
@@ -5061,9 +5069,13 @@ MonoBehaviour:
   listPosition: {x: 0, y: 0, z: 0}
   image: {fileID: 0}
   mouseOver: 0
+  clicked: 0
   pouringZones:
   - {fileID: 140309725}
   inDropzones: []
+  fullOpacity: 1
+  spriteRend: {fileID: 0}
+  Image: {fileID: 0}
   oilStain: {fileID: 1787246119}
   oilDropPrefab: {fileID: 6974809046346235755, guid: e2c26e5f88fd4d54b8899e6e6f0dc641, type: 3}
 --- !u!114 &1263465076
@@ -6827,9 +6839,13 @@ MonoBehaviour:
   listPosition: {x: 0, y: 0, z: 0}
   image: {fileID: 0}
   mouseOver: 0
+  clicked: 0
   pouringZones:
   - {fileID: 774359940}
   inDropzones: []
+  fullOpacity: 1
+  spriteRend: {fileID: 0}
+  Image: {fileID: 0}
   waterDropPrefab: {fileID: 0}
   Marker: {fileID: 793040372}
 --- !u!1 &1727020865
@@ -6987,9 +7003,13 @@ MonoBehaviour:
   listPosition: {x: 0, y: 0, z: 0}
   image: {fileID: 0}
   mouseOver: 0
+  clicked: 0
   pouringZones:
   - {fileID: 140309725}
   inDropzones: []
+  fullOpacity: 1
+  spriteRend: {fileID: 0}
+  Image: {fileID: 0}
   oilStain: {fileID: 1787246119}
   oilDropPrefab: {fileID: 6974809046346235755, guid: e2c26e5f88fd4d54b8899e6e6f0dc641, type: 3}
 --- !u!114 &1736590342

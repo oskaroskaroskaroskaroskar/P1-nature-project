@@ -5,15 +5,15 @@ using UnityEngine;
 
 public abstract class PouringItem : Item
 {
-    bool clicked = false;
+    public bool clicked = false;
     public List<GameObject> pouringZones = new List<GameObject>();
     Vector3 lastMousePosition; //variable used to detect change in mouseposition
     float pouringTimer = 0f; //used to make delay for pouring
     public List<GameObject> inDropzones = new List<GameObject>();
 
-    bool fullOpacity = true;
-    SpriteRenderer spriteRend;
-    UnityEngine.UI.Image Image;
+    public bool fullOpacity = true;
+    public SpriteRenderer spriteRend;
+    public UnityEngine.UI.Image Image;
 
     void Awake()
     {
