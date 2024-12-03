@@ -281,7 +281,6 @@ GameObject:
   m_Component:
   - component: {fileID: 31193185}
   - component: {fileID: 31193188}
-  - component: {fileID: 31193187}
   - component: {fileID: 31193186}
   - component: {fileID: 31193190}
   - component: {fileID: 31193189}
@@ -303,7 +302,8 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 100}
   m_LocalScale: {x: 0.04, y: 0.04, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 314408761}
   m_Father: {fileID: 252507631}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -334,42 +334,15 @@ MonoBehaviour:
   inDropzones: []
   fullOpacity: 1
   spriteRend: {fileID: 0}
-  Image: {fileID: 0}
+  imageRend: {fileID: 0}
   flowers:
   - {fileID: 9203190347299535269, guid: 454622d56e79c8c44a7abf4cbc821aa3, type: 3}
   - {fileID: 1251427354390872238, guid: 10d80db5f6abc594d90341a3c22ba648, type: 3}
   - {fileID: 3110230608801734160, guid: 443ba9c1fb9dabc44aa7a9d0f4460a3a, type: 3}
   dropOffset: 0
---- !u!114 &31193187
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 31193184}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_Sprite: {fileID: 1537215290, guid: 2e71bc3d4981bc148ae9a14336b01bf4, type: 3}
-  m_Type: 0
-  m_PreserveAspect: 0
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
-  m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
+  childImage: {fileID: 314408760}
+  animator: {fileID: 314408762}
+  SeedPrefab: {fileID: 0}
 --- !u!222 &31193188
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1126,6 +1099,103 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 2449902958182192858, guid: cc03931bd1ceac543b5e1133fddb11ca, type: 3}
   m_PrefabInstance: {fileID: 1881255084}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &314408760
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 314408761}
+  - component: {fileID: 314408764}
+  - component: {fileID: 314408763}
+  - component: {fileID: 314408762}
+  m_Layer: 0
+  m_Name: bagImage
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &314408761
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 314408760}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 31193185}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 828.135, y: 1131}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!95 &314408762
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 314408760}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 8e25555f226b0074ea47bcb19a162b7e, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &314408763
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 314408760}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 1537215290, guid: 2e71bc3d4981bc148ae9a14336b01bf4, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &314408764
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 314408760}
+  m_CullTransparentMesh: 1
 --- !u!1 &314827340
 GameObject:
   m_ObjectHideFlags: 0
@@ -1342,7 +1412,7 @@ MonoBehaviour:
   inDropzones: []
   fullOpacity: 1
   spriteRend: {fileID: 0}
-  Image: {fileID: 0}
+  imageRend: {fileID: 0}
   animator: {fileID: 318485537}
   oilStain: {fileID: 1787246119}
 --- !u!61 &318485541
@@ -5397,7 +5467,7 @@ MonoBehaviour:
   inDropzones: []
   fullOpacity: 1
   spriteRend: {fileID: 0}
-  Image: {fileID: 0}
+  imageRend: {fileID: 0}
   oilStain: {fileID: 1787246119}
   oilDropPrefab: {fileID: 6974809046346235755, guid: e2c26e5f88fd4d54b8899e6e6f0dc641, type: 3}
 --- !u!114 &1263465076
@@ -7139,9 +7209,10 @@ MonoBehaviour:
   inDropzones: []
   fullOpacity: 1
   spriteRend: {fileID: 0}
-  Image: {fileID: 0}
+  imageRend: {fileID: 0}
   waterDropPrefab: {fileID: 6783415857342646130, guid: 15defcdbb5447a642b542b54150c5dfc, type: 3}
   marker: {fileID: 793040372}
+  childImage: {fileID: 2034993478}
   animator: {fileID: 2034993480}
 --- !u!1 &1727020865
 GameObject:
@@ -7304,7 +7375,7 @@ MonoBehaviour:
   inDropzones: []
   fullOpacity: 1
   spriteRend: {fileID: 0}
-  Image: {fileID: 0}
+  imageRend: {fileID: 0}
   oilStain: {fileID: 1787246119}
   oilDropPrefab: {fileID: 6974809046346235755, guid: e2c26e5f88fd4d54b8899e6e6f0dc641, type: 3}
 --- !u!114 &1736590342
