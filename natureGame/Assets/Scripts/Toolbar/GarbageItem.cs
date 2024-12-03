@@ -18,5 +18,9 @@ public class GarbageItem : DragAndDropItem
         }
         else return true;
     }
+    public override float ZDisplacement()
+    {
+        return -1f;
+    }
 
 }
