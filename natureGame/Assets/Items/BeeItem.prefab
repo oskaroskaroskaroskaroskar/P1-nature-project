@@ -93,9 +93,12 @@ MonoBehaviour:
   cam: {fileID: 0}
   gameobject: {fileID: 0}
   listPosition: {x: 0, y: 0, z: 0}
+  image: {fileID: 0}
+  mouseOver: 0
   dropObject: {fileID: 0}
   dropzones: []
   inDropzones: []
+  maxCount: 0
 --- !u!50 &5719367744529514336
 Rigidbody2D:
   serializedVersion: 4
