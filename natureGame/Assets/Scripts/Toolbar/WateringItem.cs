@@ -11,7 +11,7 @@ public class WateringItem : PouringItem
     private float envInfluence;
     private float tiltDegrees = 85;
     private Coroutine drippingCoroutine;
-
+    public GameObject childImage;
     public Animator animator;
 
     public override void OnStart()
@@ -20,12 +20,16 @@ public class WateringItem : PouringItem
         envInfluence = -10f;
         cam = Camera.main;
     }
+    public override void SetRenderes()
+    {
+        spriteRend = null;
+        imageRend = childImage.GetComponent<UnityEngine.UI.Image>() ;
+    }
 
     public override void Pour()
     {
         marker.GetComponent<WaterMarker>().Pour();
         animator.SetBool("isPouring", true);
-        Debug.Log("startPouring");
         if (animator.GetBool("isPouring")) // Check envInfluence before continuing
         {
             // Start dripping water drops if not already started
@@ -48,7 +52,7 @@ public class WateringItem : PouringItem
         while (animator.GetBool("isPouring")) // Check both conditions
         {
             CreateWaterDrop();
-            yield return new WaitForSeconds(0.5f); // Wait 1 second between drops
+            yield return new WaitForSeconds(0.5f); //Number of seconds between drops
         }
         StopDripping();
     }
@@ -86,7 +90,6 @@ public class WateringItem : PouringItem
     public override void NotPouring()
     {
 
-        Debug.Log("stopPouring");
         animator.SetBool("isPouring", false);
         StopDripping();
     }

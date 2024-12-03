@@ -13,13 +13,18 @@ public abstract class PouringItem : Item
 
     public bool fullOpacity = true;
     public SpriteRenderer spriteRend;
-    public UnityEngine.UI.Image Image;
+    public UnityEngine.UI.Image imageRend;
 
     void Awake()
     {
-        spriteRend = gameObject.GetComponent<SpriteRenderer>();
-        Image = gameObject.GetComponent<UnityEngine.UI.Image>();
+        SetRenderes();
     }
+    public virtual void SetRenderes () 
+    {
+        spriteRend = gameObject.GetComponent<SpriteRenderer>();
+        imageRend = gameObject.GetComponent<UnityEngine.UI.Image>();
+    }
+
 
     public override void OnClick() //method triggered when gameobject is clicked
     {
@@ -33,11 +38,11 @@ public abstract class PouringItem : Item
         fullOpacity = true;
         if (spriteRend != null)
         {
-            gameObject.GetComponent<SpriteRenderer>().color = new Color32(255, 255, 255, 255);
+            spriteRend.color = new Color32(255, 255, 255, 255);
         }
-        else if (image != null)
+        else if (imageRend != null)
         {
-            image.color = new Color32(255, 255, 255, 255); 
+            imageRend.color = new Color32(255, 255, 255, 255); 
         }
         Dropped();
     }
@@ -60,11 +65,11 @@ public abstract class PouringItem : Item
                     fullOpacity = true;
                     if (spriteRend != null)
                     {
-                        gameObject.GetComponent<SpriteRenderer>().color += new Color32(0, 0, 0, 80);
-                    } 
-                    else if (image != null)
+                        spriteRend.color += new Color32(0, 0, 0, 80);
+                    }
+                    else if (imageRend != null)
                     {
-                        image.color += new Color32(0, 0, 0, 80); 
+                        imageRend.color += new Color32(0, 0, 0, 80);
                     }
                 }
             }
@@ -76,11 +81,12 @@ public abstract class PouringItem : Item
                     fullOpacity = false;
                     if (spriteRend != null)
                     {
-                        gameObject.GetComponent<SpriteRenderer>().color -= new Color32(0, 0, 0, 80);
+                        spriteRend.color -= new Color32(0, 0, 0, 80);
                     }
-                    else if (image != null)
+                    else if (imageRend != null)
                     {
-                        image.color -= new Color32(0, 0, 0, 80); 
+                        imageRend.color -= new Color32(0, 0, 0, 80);
+
                     }
                 }
             }
