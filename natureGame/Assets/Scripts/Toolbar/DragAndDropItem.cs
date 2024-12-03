@@ -10,6 +10,7 @@ public abstract class DragAndDropItem : Item
     public List<GameObject> dropzones = new List<GameObject>(); //list of posible zones to drop item
     public List<GameObject> inDropzones = new List<GameObject>();
     public int maxCount;
+    
 
     bool fullOpacity = true;
     SpriteRenderer spriteRend;
@@ -33,7 +34,7 @@ public abstract class DragAndDropItem : Item
         {
             //code to make object follow mouse:
             var mouseWorldPosition = cam.ScreenToWorldPoint(Input.mousePosition);
-            gameobject.transform.position = new Vector3(mouseWorldPosition.x, mouseWorldPosition.y+GameManager.touchYOffset, 0f);
+            gameobject.transform.position = new Vector3(mouseWorldPosition.x, mouseWorldPosition.y+GameManager.touchYOffset, 0);
 
             if (inDropzones.Count > 0 && !fullOpacity) //if hovers a dropzone and transparent
             {
@@ -130,9 +131,13 @@ public abstract class DragAndDropItem : Item
         //code to instatiate(=create) dropped object:
         GameObject obj = Instantiate(dropObject);
        
-        obj.transform.position = new Vector3(this.transform.position.x,this.transform.position.y,0);
+        obj.transform.position = new Vector3(this.transform.position.x,this.transform.position.y, (float)ZDisplacement());
        
     }
-   
+    public virtual float ZDisplacement()
+    {
+        return 0f;
+    }
+
     public abstract bool FilledUp();
 }
