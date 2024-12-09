@@ -799,7 +799,6 @@ GameObject:
   m_Component:
   - component: {fileID: 140309727}
   - component: {fileID: 140309726}
-  - component: {fileID: 140309728}
   - component: {fileID: 140309729}
   m_Layer: 0
   m_Name: DZ oil
@@ -875,18 +874,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1789395210}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &140309728
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 140309725}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1dba276b3293bc447b6596aa566cd4bd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!61 &140309729
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1991,7 +1978,6 @@ GameObject:
   - component: {fileID: 446938431}
   - component: {fileID: 446938430}
   - component: {fileID: 446938432}
-  - component: {fileID: 446938433}
   m_Layer: 0
   m_Name: cow walkzone
   m_TagString: cow walkzone
@@ -2111,18 +2097,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!114 &446938433
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 446938429}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1dba276b3293bc447b6596aa566cd4bd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &457717291
 GameObject:
   m_ObjectHideFlags: 0
@@ -2213,7 +2187,6 @@ GameObject:
   - component: {fileID: 472744839}
   - component: {fileID: 472744838}
   - component: {fileID: 472744837}
-  - component: {fileID: 472744840}
   m_Layer: 0
   m_Name: DZ plastic flask
   m_TagString: Dropzone
@@ -2333,18 +2306,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1395722319}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &472744840
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 472744836}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1dba276b3293bc447b6596aa566cd4bd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &488677336
 GameObject:
   m_ObjectHideFlags: 0
@@ -2614,7 +2575,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   environmentScore: 0
   scoreText: {fileID: 457717293}
-  trashItem: {fileID: 1081066676}
 --- !u!114 &519420034
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3166,7 +3126,6 @@ GameObject:
   m_Component:
   - component: {fileID: 774359941}
   - component: {fileID: 774359943}
-  - component: {fileID: 774359942}
   - component: {fileID: 774359944}
   m_Layer: 0
   m_Name: Flower DZ
@@ -3190,18 +3149,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1789395210}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &774359942
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 774359940}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1dba276b3293bc447b6596aa566cd4bd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!212 &774359943
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -3610,7 +3557,6 @@ GameObject:
   - component: {fileID: 786555474}
   - component: {fileID: 786555473}
   - component: {fileID: 786555472}
-  - component: {fileID: 786555471}
   m_Layer: 0
   m_Name: DZ plastic flask (2)
   m_TagString: Dropzone
@@ -3618,18 +3564,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &786555471
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 786555470}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1dba276b3293bc447b6596aa566cd4bd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!61 &786555472
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -4972,7 +4906,6 @@ GameObject:
   - component: {fileID: 1019256469}
   - component: {fileID: 1019256468}
   - component: {fileID: 1019256467}
-  - component: {fileID: 1019256466}
   m_Layer: 0
   m_Name: DZ plastic flask (1)
   m_TagString: Dropzone
@@ -4980,18 +4913,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1019256466
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1019256465}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1dba276b3293bc447b6596aa566cd4bd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!61 &1019256467
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -5140,11 +5061,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 64.68}
   m_Pivot: {x: 0.5, y: 0}
---- !u!1 &1081066676 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8154099260486528254, guid: 4988931058212724d9ece70a60603304, type: 3}
-  m_PrefabInstance: {fileID: 6940435897539310998}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1090363824 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2674729358133714274, guid: 8d29ebff79f15cd4395bed738dce2bae, type: 3}
@@ -6085,7 +6001,6 @@ GameObject:
   - component: {fileID: 1474672347}
   - component: {fileID: 1474672346}
   - component: {fileID: 1474672345}
-  - component: {fileID: 1474672348}
   m_Layer: 0
   m_Name: DZ Animal
   m_TagString: Dropzone
@@ -6205,18 +6120,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1789395210}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1474672348
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1474672344}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1dba276b3293bc447b6596aa566cd4bd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1490755294
 GameObject:
   m_ObjectHideFlags: 0
