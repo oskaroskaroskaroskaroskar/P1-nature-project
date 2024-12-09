@@ -14,25 +14,11 @@ public class GameManager : MonoBehaviour
     private int destroyedCount = 0; // Counter for destroyed objects
     public static float touchYOffset = 0.7f;
 
-    public GameObject trashItem;
     public GameManager() : base() {
         this.influences = new ObservableCollection<EnvironmentInfluence>();
         this.influences.CollectionChanged += this.InfluencesChanged;
     }
-    private void Start()
-    {
-        if (trashItem!=null)
-        {
-            List<GameObject> dropZones = new List<GameObject>();
-            dropZones = trashItem.GetComponent<GarbageItem>().dropzones;
-            float dropArea = 0;
-            foreach (GameObject dropZone in dropZones)
-            {
-               dropArea += dropZone.transform.localScale.x*dropZone.transform.localScale.y;
-            }
-
-        }
-    }
+    
     void InfluencesChanged (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
     {
         GetInfluence();
