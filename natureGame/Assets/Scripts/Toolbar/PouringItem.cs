@@ -5,21 +5,20 @@ using UnityEngine;
 
 public abstract class PouringItem : Item
 {
-    public bool clicked = false;
-    public List<GameObject> pouringZones = new List<GameObject>();
+    public bool clicked = false; //Bool for controlling if activated
+    public List<GameObject> pouringZones = new List<GameObject>(); //List of dropzone to be registered as its own
     Vector3 lastMousePosition; //variable used to detect change in mouseposition
-    float pouringTimer = 0f; //used to make delay for pouring
-    public List<GameObject> inDropzones = new List<GameObject>();
+    public List<GameObject> inDropzones = new List<GameObject>(); //List of own dropzones which item is currently hovering
 
-    public bool fullOpacity = true;
-    public SpriteRenderer spriteRend;
-    public UnityEngine.UI.Image imageRend;
+    public bool fullOpacity = true; //Bool for controlling if opacity is full
+    public SpriteRenderer spriteRend; //Reference to sprite renderer
+    public UnityEngine.UI.Image imageRend; //Reference to UI-image 
 
     void Awake()
     {
         SetRenderes();
     }
-    public virtual void SetRenderes () 
+    public virtual void SetRenderes () //Setting references to renderer and image
     {
         spriteRend = gameObject.GetComponent<SpriteRenderer>();
         imageRend = gameObject.GetComponent<UnityEngine.UI.Image>();
@@ -29,11 +28,10 @@ public abstract class PouringItem : Item
     public override void OnClick() //method triggered when gameobject is clicked
     {
         clicked = true;
-        EnableDropzones();
     }
-    public abstract void Pour();
-    public virtual void NotPouring() { }
-    void OnDrop()
+    public abstract void Pour(); //Method to be implemented in child
+    public virtual void NotPouring() { } //Mehtod to be optionally implemented in child
+    void OnDrop() 
     {
         fullOpacity = true;
         if (spriteRend != null)
@@ -46,18 +44,17 @@ public abstract class PouringItem : Item
         }
         Dropped();
     }
-    public virtual void Dropped() { }
+    public virtual void Dropped() { } //Mehtod to be optionally implemented in child
 
     public void Update()
     {
-        if (clicked == true)
+        if (clicked == true) //Only called if item is active
         {
             // Code to make object follow mouse
             var mouseWorldPosition = cam.ScreenToWorldPoint(Input.mousePosition);
             gameObject.transform.position = new Vector3(mouseWorldPosition.x, mouseWorldPosition.y + GameManager.touchYOffset, 0f);
 
-            // Check if the oilcan is in any pouring zone
-            if (inDropzones.Count > 0)
+            if (inDropzones.Count > 0) // Check if the pouring item is in any pouring zone
             {
                 Pour(); // Continuously pour when in the pouring zone
                 if (!fullOpacity)
@@ -118,28 +115,12 @@ public abstract class PouringItem : Item
     {
         if (clicked == true)
         {
-            DisableDropzones();
             clicked = false;
             ResetPosition();
             NotPouring();
             OnDrop();
         }
     }
-    void EnableDropzones()
-    {
-        foreach (GameObject DZ in pouringZones)
-        {
-            Dropzone dropzone = DZ.GetComponent<Dropzone>();
-
-        }
-    }
-    void DisableDropzones()
-    {
-        foreach (GameObject DZ in pouringZones)
-        {
-            Dropzone dropzone = DZ.GetComponent<Dropzone>();
-
-        }
-    }
+    
 
 }

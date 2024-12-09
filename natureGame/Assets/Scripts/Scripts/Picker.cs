@@ -5,7 +5,6 @@ using UnityEngine;
 public class Picker : MonoBehaviour
 {
     public Camera cam;
-    bool hoversTrash = false;
     bool hoversCan = false;
     //GameObject pickedTrashObj;
     bool pickedTrash = false;
