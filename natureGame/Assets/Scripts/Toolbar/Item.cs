@@ -24,7 +24,7 @@ public abstract class Item : MonoBehaviour
     public abstract void OnClick();
     void OnMouseDown ()
     {
-        if (MouseStuckItem.mouseStuckActive == true && this.GetType().BaseType.Name != "MouseStuckItem")
+        if (MouseStuckItem.mouseStuckActive == true && this.GetType().BaseType.Name != "MouseStuckItem") //Checks if a MouseStuckItem is called and deactivates it unles it is a mousestuckitem that is clicked
         {
             FindObjectOfType<MouseStuckItem>().Clicked();
           

@@ -112,8 +112,6 @@ public abstract class DragAndDropItem : Item
             }
             Released();
         }
-
-
     }
 
     protected virtual void Released() //method called when item is relaesed/dropped
