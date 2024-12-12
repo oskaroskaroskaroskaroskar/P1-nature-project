@@ -5,28 +5,27 @@ using UnityEngine.Timeline;
 
 public class FlowerItem : PouringItem
 {
-    public List<GameObject> flowers = new List<GameObject>();
-    public static int flowerCount = 0;
-    public static int flowerMax;
-    bool colorMuted = false;
+    public List<GameObject> flowers = new List<GameObject>(); //List of flower prefabs
+    public static int flowerCount = 0; //Number of current flowers
+    public static int flowerMax; //Maximum number of flowers
+    bool colorMuted = false; //Bool set if flowermax is reached
 
-    public float dropOffset;
-    private float pourSpeed;
-    float makeFlowerTimer = 0;
-    public GameObject childImage;
+    public float dropOffset; //Offset in y-cordinate for seed
+    private float pourSpeed; //Speed which the seeds are made
+    float makeFlowerTimer = 0; //Timer reset each time a flower is set
+    public GameObject childImage; //Reference to image of sack
 
-    private float tiltDegrees = 85;
-    private Coroutine drippingCoroutine;
-    public Animator animator;
-    public GameObject SeedPrefab;
+    private Coroutine drippingCoroutine; //Co-routine for controlling dripping seeds 
+    public Animator animator; //Reference to animator
+    public GameObject SeedPrefab; //Prefab of flower-seed
 
-    System.Random random = new System.Random();
-    public override void SetRenderes()
+    System.Random random = new System.Random(); //Variable for creating random numbers
+    public override void SetRenderes() //Override of pouringitem method. Used to create reference of rendere or image
     {
         spriteRend = null;
         imageRend = childImage.GetComponent<UnityEngine.UI.Image>();
     }
-    public override void OnStart()
+    public override void OnStart() //method called from parent in void Start() 
     {
         flowerMax = 10;
         dropOffset = -1.7f;
@@ -37,36 +36,36 @@ public class FlowerItem : PouringItem
     {
         base.Update();
 
-        if (flowerCount >= flowerMax && !colorMuted)
+        if (flowerCount >= flowerMax && !colorMuted) //Checks if max number flowers and image not muted
         {
             colorMuted = true;
-            imageRend.color -= new Color32(150, 150, 150, 0);
+            imageRend.color -= new Color32(150, 150, 150, 0); //Mutes color
         }
         else if (flowerCount < flowerMax && colorMuted)
         {
             colorMuted = false;
-            imageRend.color += new Color32(150, 150, 150, 0);
+            imageRend.color += new Color32(150, 150, 150, 0); //Unmutes color
         }
        
     }
 
-    public override void Pour()
+    public override void Pour() //Method called from parent when pouring
     {
         if (flowerCount<flowerMax)
         {
-            if (makeFlowerTimer<2f) //number of seconds till next flower
+            if (makeFlowerTimer<2f) //time till next flower
             {
-                makeFlowerTimer += Time.deltaTime*pourSpeed;
+                makeFlowerTimer += Time.deltaTime*pourSpeed; //Enhancing timer
                 
             }
             else {
-                MakeFlower();
-                makeFlowerTimer = 0;
+                MakeFlower(); 
+                makeFlowerTimer = 0; //Resets timer
             }
-            animator.SetBool("isPouring", true);
-            if (animator.GetBool("isPouring")) // Check envInfluence before continuing
+            animator.SetBool("isPouring", true); //Sets animation
+            if (animator.GetBool("isPouring")) // Checking if pouring
             {
-                // Start dripping water drops if not already started
+                // Start dripping seeds if not already started
                 if (drippingCoroutine == null)
                 {
                     drippingCoroutine = StartCoroutine(DripSeed());
@@ -87,7 +86,7 @@ public class FlowerItem : PouringItem
 
     }
 
-    private IEnumerator DripSeed()
+    private IEnumerator DripSeed() //Co-routine used for making script run smoothly even though delay is applied
     {
 
         while (animator.GetBool("isPouring")) // Check both conditions
@@ -124,25 +123,25 @@ public class FlowerItem : PouringItem
     }
 
 
-    private void OnMouseUp()
+    private void OnMouseUp() //Method called whenever mouse if unclicked
     {
         base.OnMouseUp(); // Ensures the existing stop logic from PouringItem is executed
         StopDripping(); // Stop the dripping coroutine when the mouse is released
     }
-    void MakeFlower()
+    void MakeFlower() //Method for making a flower
     {
         
-        int rInt = random.Next(0, flowers.Count);
+        int rInt = random.Next(0, flowers.Count); //Gets a random integer representing the different colors of flowers
         GameObject newFlower = Instantiate(flowers[rInt]);
-        newFlower.transform.position = new Vector3(this.transform.position.x+ 0.5f, this.transform.position.y+dropOffset, 0);
+        newFlower.transform.position = new Vector3(this.transform.position.x+ 0.5f, this.transform.position.y+dropOffset, 0); //Fixing position
     }
-    public override void NotPouring()
+    public override void NotPouring() //Method called from parent when not pouring
     {
 
         animator.SetBool("isPouring", false);
         StopDripping();
     }
-    public override void Dropped()
+    public override void Dropped() //method called from parent when item stops being used
     {
         colorMuted = false;
     }

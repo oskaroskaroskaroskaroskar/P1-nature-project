@@ -5,32 +5,27 @@ using UnityEngine;
 public class WateringItem : PouringItem
 {
     public GameObject waterDropPrefab; // Prefab for the oil drop
-    public GameObject marker;
+    public GameObject marker; //Reference to drop-point
 
-    private float pourSpeed;
-    private float envInfluence;
-    private float tiltDegrees = 85;
-    private Coroutine drippingCoroutine;
-    public GameObject childImage;
-    public Animator animator;
+    private Coroutine drippingCoroutine;//Co-routine for controlling dripping seeds 
+    public GameObject childImage;//Reference to image of watering can
+    public Animator animator; //Reference to animator
 
-    public override void OnStart()
+    public override void OnStart() //Method called from parent in void Start()
     {
-        pourSpeed = 0.2f;
-        envInfluence = -10f;
         cam = Camera.main;
     }
-    public override void SetRenderes()
+    public override void SetRenderes() //Overrides method from parent to set iamge reference
     {
         spriteRend = null;
         imageRend = childImage.GetComponent<UnityEngine.UI.Image>() ;
     }
 
-    public override void Pour()
+    public override void Pour() //Method called from parent when parent
     {
         marker.GetComponent<WaterMarker>().Pour();
         animator.SetBool("isPouring", true);
-        if (animator.GetBool("isPouring")) // Check envInfluence before continuing
+        if (animator.GetBool("isPouring")) // Checking if pouring
         {
             // Start dripping water drops if not already started
             if (drippingCoroutine == null)
@@ -46,7 +41,7 @@ public class WateringItem : PouringItem
         }
     }
 
-    private IEnumerator DripWater()
+    private IEnumerator DripWater() //Co-routine used for making script run smoothly even though delay is applied
     { 
     
         while (animator.GetBool("isPouring")) // Check both conditions
@@ -82,12 +77,12 @@ public class WateringItem : PouringItem
         }
     }
    
-    private void OnMouseUp()
+    private void OnMouseUp()//Method called whenever mouse if unclicked
     {
         base.OnMouseUp(); // Ensures the existing stop logic from PouringItem is executed
         StopDripping(); // Stop the dripping coroutine when the mouse is released
     }
-    public override void NotPouring()
+    public override void NotPouring()//Method called from parent when not pouring
     {
 
         animator.SetBool("isPouring", false);
