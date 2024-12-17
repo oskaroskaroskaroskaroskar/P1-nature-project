@@ -342,7 +342,7 @@ MonoBehaviour:
   dropOffset: 0
   childImage: {fileID: 314408760}
   animator: {fileID: 314408762}
-  SeedPrefab: {fileID: 0}
+  SeedPrefab: {fileID: 3245270309141814490, guid: a51dc0de5edc3154da7fe89052a5007e, type: 3}
 --- !u!222 &31193188
 CanvasRenderer:
   m_ObjectHideFlags: 0
